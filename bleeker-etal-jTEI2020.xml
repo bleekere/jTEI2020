@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_jtei.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_jtei.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" rend="jTEI">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Intuitively representing the nature of text: the TAG model for
+               text</title>
+            <author>
+               <name>
+                  <forename>Elli</forename>
+                  <surname>Bleeker</surname>
+               </name>
+               <name><forename>Ronald</forename><surname>Haentjens Dekker</surname></name>
+               <name><forename>Bram</forename><surname>Buitendijk</surname></name>
+               <affiliation>The authors are part of the R&amp;D group of the Humanities Cluster of
+                  the Royal Dutch Academy for Arts and Sciences.</affiliation>
+               <email>elli.bleeker@gmail.com</email>
+            </author>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>TEI Consortium</publisher>
+            <date/>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>For this publication a Creative Commons Attribution 4.0 International license
+                     has been granted by the author(s) who retain full copyright.</p>
+               </licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <p>No source, born digital.</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>Revues.org -centre for open electronic publishing- is the platform for journals in
+               the humanities and social sciences, open to quality periodicals looking to publish
+               full-text articles online.</p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="en">en</language>
+         </langUsage>
+         <textClass>
+            <keywords xml:lang="en">
+               <term>markup</term>
+               <term>digital editing</term>
+               <term>genetic criticism</term>
+               <term>text modeling</term>
+               <term>overlap</term>
+               <term>data models for text</term>
+            </keywords>
+         </textClass>
+      </profileDesc>
+      <revisionDesc>
+         <change/>
+      </revisionDesc>
+   </teiHeader>
+   <text>
+      <front>
+         <div type="abstract" xml:id="abstract">
+            <p>Over the past decades, the question of <mentioned>what text really is</mentioned> has
+               been addressed by a large number of conferences, workshops, articles, and blog posts.
+               If there is one thing that, taken together, those contributions illustrate, it is
+               that our understanding of text is – and has been – constantly in flux and open for
+               many interpretations. This flexible and heterogeneous understanding of text is
+               reflected by the TEI Guidelines: users can mix modules and elements in order to come
+               to their encoding model of choice. As a result, most encoding models are based on a
+               scholar conceptual understanding of a text and their research interest in a text.
+               Still, there often are significant gaps between how a scholar conceptually thinks
+               about text, how this translates to an encoding model, and how a computer understands
+               the encoded text. Put differently: how an encoding looks to a human reader often
+               differs from the way that information is stored on a computer.</p>
+            <p>In the present contribution, we illustrate how the Text-As-Graph (TAG) hypergraph
+               data model and the associated syntax TAGML can be employed to express and store
+               textual features in a way that corresponds more closely with the scholar’s
+               understanding of it. TAG’s functional design is based on the objective to reconcile
+               the conceptual model, the encoding model and the informational model. The
+               expressiveness of the syntax TAGML allows scholars to digitally represent their
+               understanding of a text in a more explicit and formal manner. This information is
+               then stored in the hypergraph data model for text. Consequently, a TAGML processor
+               will not require any application layer in order for the text to be processed,
+               queried, and analysed as it is intended and understood by the encoder. Finally, TAG’s
+               approach will also promote the sustainability, archivability, and reuse of the text
+               encoding.</p>
+         </div>
+      </front>
+      <body>
+
+         <div xml:id="intro">
+            <head>Introduction</head>
+            <p>Over the past decades, the question of <mentioned>what text really is</mentioned> has
+               been addressed by a large number of conferences, workshops, articles, and blog posts.
+               If there is one thing that, taken together, those contributions illustrate, it is
+               that our understanding of text is – and has been – constantly in flux and open for
+               many interpretations. This flexible and heterogeneous understanding of text is
+               reflected by the TEI Guidelines: users can mix modules and elements in order to come
+               to their encoding model of choice. As a result, most encoding models are based on a
+               scholar conceptual understanding of a text and their research interest in a text.
+               Still, there often are significant gaps between how a scholar conceptually thinks
+               about text, how this translates to an encoding model, and how a computer understands
+               the encoded text. Put differently: how an encoding looks to a human reader often
+               differs from the way that information is stored on a computer.</p>
+            <p>A clear example of this lack of congruence is seen with what we call <term
+                  xml:id="nonlinear">non-linear text</term>, a textual phenomenon often present on
+               historical or literary documents in the form of deletions and additions. We consider
+               text to be non-linear when there is more than one order in which words or characters
+               may be placed without influencing the semantics of the text. A straightforward
+               example is the sentence <eg>This is a <hi rend="strike-out">first</hi>
+                  <hi rend="addition">second</hi> attempt.</eg> From the perspective of a human
+               reader, the deleted and the added word represent two readings of the character
+               sequence. The deleted and the added word are located at the same position in the text
+               sequence and they are mutually exclusive: reading from left to right, the sentence
+               either says <eg>this is a first attempt</eg> or <eg>this is a second attempt</eg>. We
+               say that the text characters are <term>fully ordered</term> until the point where the
+               variation occurs (at the crossed-out word <q>first</q>). At this point, the text
+               characters are <term>unordered</term>. The two reading paths converge again after the
+               variation ends, so the text characters are again fully ordered after the addition. We
+               therefore also call non-linear text <term>partially ordered text</term>.</p>
+            <p>From an informational perspective, however, the partially-orderedness as perceived by
+               a human reader is not represented as such in the underlying data model. In TEI XML,
+               partially ordered text may be encoded like this: <egXML
+                  xmlns="http://www.tei-c.org/ns/Examples"><s>This is a
+                        <del>first</del><add>second</add> attempt.</s></egXML> As human readers, we
+               assume that if the <gi>del</gi> and <gi>add</gi> elements were to be placed in a
+               different order, they would not have the same meaning (see <ref type="bibl"
+                  target="#dekk2017">Haentjens Dekker and Birnbaum</ref>and <ref type="bibl"
+                  target="#dekk2018">Haentjens Dekker et al.</ref>). However, in XML, all text and
+               markup are typically ordered.<note>Only XML attributes and XML attribute values are
+                  unordered.</note> In order for an XML processor to understand that the markup
+               element <gi>subst</gi> expresses the start of partially ordered text, it needs to
+               have access to an application layer like a schema that explains the semantic meaning
+               of the markup tag. The more responsibility is delegated to additional application
+               layers, the more complex the processing of the XML document becomes.<note>See also
+                     <ref type="bibl" xml:id="quoteref1" target="#sper2008">Sperberg-McQueen and
+                     Huitfeldt</ref>, who point out that any mechanisms defined by the TEI to
+                  express textual features like discontinuity are not understood or supported by
+                  generic XML tools; <quote source="#quoteref1">they require vocabulary-specific
+                     support by a different layer of code</quote>, and by <ref target="#per2009"
+                     type="bibl" xml:id="quoteref2">Peroni and Vitali</ref> who state that a TEI XML
+                  document with specific markup that requires to be <quote source="#quoteref2"
+                     >understood and exploited by a very specific and application-dependent
+                     tool</quote> defeats the purpose of switching to XML in the first place. This
+                  line of reasoning reflects the software development principle of Separation of
+                  Concerns, which sets out to decrease complexity, promote sustainable development,
+                  and facilitate the maintenance of code.</note> Ideally, therefore, one likes to
+               avoid depending on the application layer(s) for TEI XML documents to be processed in
+               accordance with a scholar’s expectations. That means information about non-linearity
+               and other alternative text structures or orderings should be part of the data model
+               and not the application layer(s). Once a data model is able to represent and store as
+               many properties of a text as possible, the application layer(s) do(es) not need to
+               supplement the model and can focus on actual application-level tasks instead (<ref
+                  type="bibl" target="#dekk2017">Haentjens Dekker and Birnnaum</ref>).</p>
+            <p>In the present contribution, we illustrate this line of reasoning argument with the
+                  <ref target="https://huygensing.github.io/TAG/">Text-As-Graph (TAG)</ref>
+               hypergraph data model and the associated syntax <ref
+                  target="https://github.com/HuygensING/TAG/tree/master/TAGML">TAGML</ref>. Both TAG
+               and TAGML are designed to express and store textual features in a way that
+               corresponds more closely with the scholar’s understanding of it. TAG’s functional
+               design is based on the objective to reconcile the conceptual model, the encoding
+               model and the informational model. The expressiveness of the syntax TAGML allows
+               scholars to digitally represent their understanding of a text in a more explicit and
+               formal manner. This information is then stored in the hypergraph data model for text.
+               Consequently, a TAGML processor will not require any application layer in order for
+               the text to be processed, queried, and analysed as it is intended and understood by
+               the encoder. Finally, TAG’s approach will also promote the sustainability,
+               archivability, and reuse of the text encoding. </p>
+            <p>The textual examples used in this article come from modern manuscripts (i.e.,
+               authorial holographs and drafts dating from the late nineteenth, early twentieth
+               century) that are encoded from a genetic perspective on text, meaning that the
+               encoder is interested in capturing the various textual revisions in great detail.
+               This interest, combined with the type of manuscript material, presents the encoder
+               with textual features that are notoriously complex to model in TEI XML: overlapping
+               text structures, discontinuous text, and non-linear text are more rule than
+               exception. After a brief description of the research objectives of the field followed
+               by an illustration of three textual features, the article goes on to describe the
+               main characteristics of the TAG model. The third and final section of the article
+               addresses the theoretical and practical implications of using TAGML to express the
+               example texts from the first section. By contrasting the TAG model with the TEI XML
+               model, the article illustrates how a text encoded in TAGML is understood and
+               processed in a way that is closer to the genetic scholar’s understanding of the text.
+               <!-- add: nice concluding sentence - how wonderful is it all --></p>
+         </div>
+         <div xml:id="genetic-research">
+            <head>Textual Genetic Research and Text Modeling</head>
+            <div xml:id="objectives">
+               <head>Research Objectives</head>
+               <p>The field of textual genetic research is concerned with the way literary texts
+                  originate and develop over time. To this end, draft manuscripts provide a great
+                  source of information as the writings on these documents often reflect the
+                  author’s train of thought: words are crossed out, sentences are added, paragraphs
+                  transposed… In other words, draft manuscripts represent traces of a writing
+                  process and by extension the creation and development of a literary work. Since
+                  that’s exactly what textual genetic scholars intend to capture and study, it’s
+                  important that information related to the writing process is expressed as detailed
+                  as possible. Additionally, textual genetic editors set out to store and represent
+                  the results of their research in such a way, that it can be explored by others.
+                  This may be in a digital research environment or a digital scholarly
+                     edition.<note>Examples of digital research environments and editions
+                     specifically aimed at supporting and presenting textual genetic research
+                     include the <ref target="https://www.beckettarchive.org/">Beckett Digital
+                        Manuscript Project</ref> (created by Dirk van Hulle and Vincent Neyt,
+                     ongoing); the <ref target="http://research.cch.kcl.ac.uk/proust_prototype/"
+                        >prototype</ref> of an opening from a notebook of Marcel Proust (created by
+                     Julie André and Elena Pierazzo); the <ref target="http://faustedition.net/"
+                        >genetic edition</ref> of Johann Wolfgang Goethe’s <title>Faust</title>
+                     (edited by Anne Bohnenkamp et al); the <ref
+                        target="https://www.beckettarchive.org/ads/Ads.htm">electronic edition</ref>
+                     of Willem Elsschot’s <title>Achter de Schermen</title> (edited by De Bruin et
+                     al, 2007); and the <ref target="https://rotunda.upress.virginia.edu/melville/"
+                        >Fluid Text edition</ref> of Herman Melville’s <title>Typee</title> (edited
+                     by John Bryant, 2006). All links were last accessed on <date when="2020-02-25"
+                        >February 25, 2020</date> in a Mozilla Firefox browser.</note></p>
+               <p>In order to adequately represent and study a text’s genesis, editors typically (1)
+                  express textual variation within one text; (2) map the relationships between texts
+                  and documents related to the genesis of a text; and (3) compare textual variation
+                  across documents; i.e., textual collation.<note>It’s not within the scope of this
+                     article to survey describe this workflow in more detail, or to survey the
+                     digital tools that support the activities within this scholarly
+                     workflow.</note> A tool used to support either of these activities needs to
+                  recognise the kind of information that is relevant for textual genesis and –
+                  ideally – also ensure that this information is retained throughout the processing.
+                  For example: if a tool ignores or discards the information about an author’s
+                  revision process because it isn’t able to recognise the way this information is
+                  encoded, it will have serious consequences for the analysis of the text’s genesis.
+                  Incidentally, although we use examples from textual genetic studies throughout
+                  this article, it may be noted that this principle applies to a wide variety of
+                  text encoding and text processing.</p>
+            </div>
+            <div xml:id="features">
+               <head>Complex Textual Features</head>
+               <p>Occurrences of non-linear text structures are many and various and can get very
+                  complex very fast. For reasons of clarity and brevity, the following paragraphs
+                  discuss three simple examples of complex textual structures. For more complex
+                  cases, see <!-- add link to appendix? Or maybe on the TAGML website? -->. Unless
+                  indicated otherwise, the examples come from the authorial holograph of <title>To
+                     the Lighthouse</title> by <ref type="bibl" target="#woolf1927">Virginia
+                     Woolf</ref>.</p>
+               <div xml:id="nonlinearity">
+                  <head>Non-linearity</head>
+                  <p>As mentioned <ref target="#nonlinear">above</ref>, we understand non-linear
+                     text as having multiple paths through a text: a sequence of words or characters
+                     that splits into two or more branches, for instance at the point where
+                     variation in the text occurs that join together again at the end of the
+                     variation. The encoder can use markup in order to mark the location of the
+                        <term>branching</term> of the text. The three figures below present cases of
+                     non-linearity:</p>
+                  <div xml:id="deletion">
+                     <head>Single Deletion or Addition</head>
+                     <p>In this example, the words <q>impossible barriers</q> are striked through by
+                        the author. This means that there are at least two variant states of the
+                        text, one including the deletion and one excluding it: <q>difference of
+                           opinion, impossible barriers, prejudices</q> or <q>difference of opinion,
+                           prejudices</q>.<figure xml:id="single_deletion">
+                           <graphic url="img/single_deletion.png" width="620px" height="980px"/>
+                           <head type="legend">A single deletion. Fol. 27; SD p. 13.</head>
+                           <head type="license"/>
+                        </figure></p>
+                  </div>
+                  <div xml:id="immediate-del">
+                     <head>Immediate Deletion</head>
+                     <p>An immediate revision, also called by its latin term <term>currente
+                           calamo</term>, means that the revision is made during the first spell of
+                        writing (and not when the author later returns to the text to make
+                        corrections). The example in <ref target="immediate_del">figure 2</ref>
+                        shows how Woolf started the sentence with the word <q>This</q> and
+                        immediately corrected it to <q>The</q>. This means that there is no other
+                        way of reading the text; no variant state that does not include the
+                        revision, simply one path: <q>This The idea has grown...</q><figure
+                           xml:id="immediate_del">
+                           <graphic url="img/immediate_del.png" width="620px" height="980px"/>
+                           <head type="legend">An immediate deletion. Fol. 7; SD p. 3; Names to be
+                              used.</head>
+                           <head type="license"/>
+                        </figure></p>
+                  </div>
+                  <div xml:id="grouped-rev">
+                     <head>Grouped Revision</head>
+                     <p>We already saw an example of a grouped revision in the introduction; <ref
+                           target="grouped_rev">figure 3</ref> represents another case: <q>for being
+                           so certainly disagreeable</q>. The grouped revision is very similar to
+                        the single deletion and the single addition: again, there are two ways of
+                        reading the text, one including the word that has been deleted, and one
+                        without that word and including the addition. However, in the case of a
+                        grouped revision, scholars encode that the deletion and the addition belong
+                        together semantically. In TEI XML this can be indicated by grouping them
+                        with the <gi>subst</gi> element (see also the example in the introduction).
+                        Conceptually, this implies that the order of the contents of the
+                           <gi>subst</gi> element are placed is temporarily irrelevant. The two
+                        words – <q>so</q> and <q>certainly</q> – alternate and are mutually
+                        exclusive: whether we choose the original reading so or the corrected
+                        reading certainly, they are at the same distance from the beginning of the
+                           sentence.<figure xml:id="grouped_rev">
+                           <graphic url="img/grouped_rev.png" width="680px" height="980px"/>
+                           <head type="legend">A grouped revision. Fol. 13; SD p. 6.</head>
+                           <head type="license"/>
+                        </figure></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </body>
+
+      <back>
+         <div type="bibliography">
+
+            <listBibl>
+               <bibl xml:id="dekk2017"><author>Haentjens Dekker, Ronald</author> and <author>David
+                     J. Birnbaum</author>. <date>2017</date>. <title level="a">It’s More Than Just
+                     Overlap: Text As Graph</title><title level="m">Proceedings of Balisage: The
+                     Markup Conference 2017</title><series>Balisage Series on Markup
+                     Technologies</series>, <biblScope unit="volume"
+                     >19</biblScope><date>2017</date><idno>https://doi.org/10.4242/BalisageVol19.Dekker01</idno></bibl>
+
+               <bibl xml:id="dekk2018"><author>Haentjens Dekker, Ronald</author>, <author>Elli
+                     Bleeker</author>, <author>Bram Buitendijk</author>, <author>Astrid
+                     Kulsdom</author> and <author>David J. Birnbaum</author>. <date>2018</date>.
+                     <title level="a">TAGML: a Markup Language of Many Dimensions</title><title
+                     level="m">Proceedings of Balisage: The Markup Conference 2018</title>.
+                     <series>Balisage Series on Markup Technologies</series>, <biblScope
+                     unit="volume"
+                     >21</biblScope><idno>https://doi.org/10.4242/BalisageVol21.HaentjensDekker01</idno></bibl>
+
+               <bibl xml:id="sper2008"><author>Sperberg-McQueen, Michael C.M.</author> and
+                     <author>Claus Huitfeldt</author>. <date>2008</date>
+                  <title level="a">Markup Discontinued. Discontinuity in TexMecs, GODDAG Structures,
+                     and Rabbit/Duck Grammars</title><title level="m">Proceedings of Balisage: The
+                     Markup Conference 2008</title>. <series>Balisage Series on Markup
+                     Technologies</series>, <biblScope unit="volume"
+                     >1</biblScope><idno>https://doi.org/10.4242/BalisageVol1.Sperberg-McQueen01</idno></bibl>
+
+               <bibl xml:id="per2009"><author>Peroni, Sylvio</author> and <author>Fabio
+                     Vitali</author>. <date>2009</date>. <title>Annotations with EARMARK for
+                     Arbitrary, Overlapping and Out-of-Order Markup</title>. <title level="m"
+                     >Proceedings of the 2009 ACM Symposium on Document Engineering</title>.
+                     <idno>﻿10.1145/1600193.1600232</idno></bibl>
+
+               <bibl xml:id="woolf1927"><author>Woolf, Virginia</author>. <date>1927</date>.
+                     <title>To the Lighthouse</title>, Holograph ms. Berg Collection, New York
+                  Public Library. <editor>Pamela L. Caughie</editor>, <editor>Nick Hayward</editor>,
+                     <editor>Mark Hussey</editor>, <editor>Peter Shillingsburg</editor>, and
+                     <editor>George K. Thiruvathukal</editor><ref
+                     target="http://www.woolfonline.com"/></bibl>
+            </listBibl>
+         </div>
+      </back>
+   </text>
+</TEI>
