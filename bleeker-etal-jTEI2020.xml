@@ -300,6 +300,40 @@
                            <head type="license"/>
                         </figure></p>
                   </div>
+                  <div xml:id="other-cases">
+                     <head>Other Cases of Nonlinearity</head>
+                     <p>Note that in the examples so far, the branching of the text occurs on the
+                        original source manuscript; markup is used to flag the start and end of the
+                        nonlinearity. However, there are also cases in which an encoder would like
+                        to represent nonlinear information that is not on the original source
+                        document. The TEI markup elements <gi>app</gi> and <gi>choice</gi>, for
+                        instance, have a similar effect of partially ordered information: they group
+                        together <quote source="#quoteref3">a number of alternative encodings for
+                           the same point in a text</quote> (<ref type="bibl" xml:id="quoteref3"
+                           target="#TEI2019">TEI P5, chapter 3.4</ref>. As a consequence,he contents
+                        of the <gi>choice</gi> element are placed have no influence on the semantic
+                        meaning. <!-- TODO: voorbeeld toevoegen --></p>
+                  </div>
+               </div>
+               <div xml:id="Discontinuity">
+                  <head>Discontinuity</head>
+                  <p>Discontinuity happens when a text forms semantically a single continuous
+                     utterance, but is interrupted by other elements. The example in figure 4 is
+                     taken from a question on the TEI-L <!-- REF toevoegen -->and presents an
+                     interesting case in which a narrator (Marion) cites a letter she has received.
+                     She intersperses this citation, however, with her own comments upon the text of
+                     the letter (<q>wrote Ada</q> and <q>I had told them
+                     so</q>).<!-- Noot: Ik wil hier graag een tekstgenetisch voorbeeld van geven, zoals een "del" 
+                        die betrekking heeft op meerdere maar niet alle woorden in een zin. Ik ken dit uit Anne Frank 
+                        maar ben nog op zoek naar voorbeelden uit andere documenten. 
+                        Tot ik die heb gevonden gebruik ik dit voorbeeld. -->
+                     Ideally, the citation is encoded as one single expression instead of three
+                     separate expressions. <figure xml:id="discontinuity1">
+                        <graphic url="img/discontinuity1.png" width="680px" height="980px"/>
+                        <head type="legend">An example of discontinuity in a running text (<ref
+                              target="#Watanna1916" type="bibl">Watanna 1916, p.171</ref>)</head>
+                        <head type="license"/>
+                     </figure></p>
                </div>
             </div>
          </div>
@@ -344,7 +378,18 @@
                   Public Library. <editor>Pamela L. Caughie</editor>, <editor>Nick Hayward</editor>,
                      <editor>Mark Hussey</editor>, <editor>Peter Shillingsburg</editor>, and
                      <editor>George K. Thiruvathukal</editor><ref
-                     target="http://www.woolfonline.com"/></bibl>
+                     target="http://www.woolfonline.com">Woolf Online</ref>.</bibl>
+
+               <bibl xml:id="TEI2019">TEI Consortium. <date>2013</date>. <title>TEI P5: Guidelines
+                     for Electronic Text Encoding and Interchange</title>. Version 2.5.0. Last
+                  updated July 26. N.p.: <ref
+                     target="http://www.tei-c.org/Vault/P5/2.5.0/doc/tei-p5-doc/en/html/">TEI
+                     Consortium</ref>.</bibl>
+
+               <bibl xml:id="Watanna1916"><author>Watanna, Onoto</author>. <date>1916</date>.
+                     <title>Marion, the Story of an Artist’s Model</title>. <pubPlace>New
+                     York</pubPlace>: <publisher>W.J. Watt</publisher>.
+                     <idno>urn:oclc:record:1048793515</idno>.</bibl>
             </listBibl>
          </div>
       </back>
