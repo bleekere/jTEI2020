@@ -400,17 +400,161 @@
                      2016</ref>), one can theoretically use any datamodel to express any kind of
                   text, no matter how complex, as long as one is willing to use some workarounds, do
                   some extra coding, and handover certain tasks to other data formats. However, as
-                  many have pointed out, TEI XML has a wide variety of different mechanisms to
-                  express a textual feature, and no XML processor will be able to correctly
-                  interpret these mechanisms unless it depends on a schema or some other document
-                  that explains the intended meaning (among others, see <ref type="bibl"
-                     target="#schmidt">Schmidt</ref>; <ref type="bibl" target="#sper2008"
-                     >Sperberg-McQueen and Huitfeldt 2008</ref>; <ref target="#per2009" type="bibl"
-                     >Peroni and Vitali 2009</ref>; <ref target="#dekk2017" type="bibl">Dekker and
-                     Birnbaum 2017</ref>). In this contribution, we maintain the argument that the
-                  more workarounds and handovers required, the more difficult it becomes to process
-                  or query the text, and the less interchangeable or reuseable the encoded text
-                  becomes.</p>
+                  many have pointed out, extra coding typically has a negative effect on the
+                  interoperability, interchangeability, reuseability or processing of the text
+                  encoding (among others, see <ref type="bibl" target="#schmidt">Schmidt</ref>; <ref
+                     type="bibl" target="#sper2008">Sperberg-McQueen and Huitfeldt 2008</ref>; <ref
+                     target="#per2009" type="bibl">Peroni and Vitali 2009</ref>; <ref
+                     target="#dekk2017" type="bibl">Dekker and Birnbaum 2017</ref>). The TEI
+                  Guidelines offers a wide variety of different mechanisms to express information
+                  about a textual feature, and no XML processor will be able to correctly interpret
+                  these mechanisms unless it depends on a schema or some other document that
+                  explains the intended meaning. In this contribution, we maintain the argument that
+                  the more workarounds and handovers required, the more difficult it becomes to
+                  process or query the text, and the less interchangeable or reuseable the encoded
+                  text becomes.</p>
+               <p>Finally, we cannot and should not ignore the importance of human readability and
+                  usability: a data model that feels intuitive or natural to the user will in fact
+                  boost the user’s interaction with the data. This resonates in the work of Claus
+                  Huitfeldt and Michael Sperberg-McQueen who describe the value of having a data
+                  structure that agrees in many ways with the <quote source="#quoteref4">ideal
+                     structure ... as it exists in some human mind</quote> since that would
+                  significantly ease encoding praxis (<ref target="#huit2003" type="bibl"
+                     xml:id="quoteref4">Huitfeldt and Sperberg-McQueen 2003</ref>, section 2.4).
+                  Elsewhere, they write that the mechanisms for handling overlap, like concurrent
+                  markup, milestones, fragmentation, virtual elements, or standoff markup, <quote
+                     source="#quoteref5">do not always exhibit the simplicity and clarity which make
+                     SGML and XML attractive in simpler cases</quote> (<ref type="bibl"
+                     target="#huit2006" xml:id="quoteref5">Huitfeldt and Sperberg-McQueen
+                  2006</ref>). For all these reasons, the following paragraphs focus specifically on
+                  existing data models and markup languages that handle non-linearity, discontinuity
+                  and overlap in a natural, idiomatic way.</p>
+               <p>Previous efforts to mapping approaches to modeling complex textual features can be
+                  found with an actual map drawn by Wendell Piez at the <ref target="#piez2008"
+                     type="bibl">2008 GODDAG workshop</ref>, the MLCD Overlap Corpus (<ref
+                     type="bibl" target="#huit2012">Huitfeldt et al. 2010</ref>), and the tables
+                  created by Fabio Vitali (<ref type="bibl" target="#vitali2016">2016</ref>).In
+                  addition, we propose an overview of the existing data structures for modeling
+                  complex textual features, see overzicht data structures <!-- NOTE: toevoegen -->.
+                  In this overview, we follow the principle outlined above, that any data model can
+                  theoretically express any kind of text feature if it is complemented with
+                  workarounds or bespoke coding, but that this is not what we should aim for. In the
+                  table, <q>yes</q> means the feature is natively supported in the datamodel. If a
+                  feature is only supported with the help of a hack, a work-around or in the
+                  application layer, it is taken as a <q>no</q>.</p>
+               <div xml:id="non-linearity2">
+                  <head>Non-linearity</head>
+                  <p>The markup language TexMECS is designed as a linear representation for
+                     non-linear objects modeled as a GODDAG data structure (<ref target="#huit2003"
+                        type="bibl">Huitfeldt and Sperberg-McQueen 2003</ref>). In GODDAG, all
+                     children of the markup nodes are typically ordered, but TexMECS provides a
+                     notation to mark certain markup nodes as unordered. For example, a
+                        <gi>subst</gi> element can be marked as unordered with the notation
+                        <code>This is the
+                        <!-- <|subst || <del| first |del> <add| second |add> ||subst|> -->
+                        attempt</code> which means that its children are unordered. In those cases,
+                     the GODDAG processor ignores the default linear order of the children of these
+                     elements and as such TexMECS supports the representation of non-linear
+                     structures. However, there is no known working implementation available. At
+                     first glance, EARMARK (Extremely Annotated RDF Markup) also seems to support
+                     the option to represent non-linearity: with EARMARK users can express different
+                     linear structures using RDF statements about text fragments, and as such it’s
+                     possible to describe multiple text orders (<ref type="bibl" target="#per2009"
+                        >Peroni and Vitali 2009</ref>, section 4.1; <ref type="bibl"
+                        target="#iorio2009">Di Iorio 2009</ref>). However, this is not the kind of
+                     partially-ordereness as it is described in this contribution in the sense of
+                     diverging and converging paths through the text. So while the underlying RDF
+                     data model is flexible enough to express partially ordered information, the
+                     EARMARK specification as described in (<ref type="bibl" target="#per2009"
+                        >Peroni and Vitali 2009</ref>) doesn’t natively support it.</p>
+               </div>
+               <div xml:id="discontinuity2">
+                  <head>Discontinuity</head>
+                  <p>Discontinuity, by which we mean the encoding of a single continuous utterance
+                     even though it is interrupted by one or more other structures, is also natively
+                     supported in TexMECS. The syntax provides a notation to suspend and resume the
+                     discontinuous markup elements (Sperberg-McQueen and Huitfeldt 2008), ensuring
+                     that the datamodel GODDAG considers it one single unit, even though they appear
+                     fragmented in the serialisation. In their EARMARK paper, Peroni and Vitali
+                     mention that EARMARK is able to handle situations where <quote
+                        source="#quoteref2">non-contiguous ranges are contained by a particular
+                        markup item</quote> (<ref target="#per2009" type="bibl">2009</ref>) which
+                     can be understood as a discontinuity situation. Let it be noted that there are
+                     several widely used mechanisms in TEI XML to <q>aggregate</q> elements that
+                     belong together but are necessarily separated because of the mono-hierarchical
+                     structure of the implied datamodel. For instance, linking elements via the
+                        <att>next</att> and <att>prev</att> attributes, via the <tag>join</tag>
+                     element with <att>target</att> attributes, or via <att>xml:id</att> attributes.
+                     Furthermore, there is the TEI XPointer scheme, part of the larger XPointer
+                     framework of the W3C (<ref type="bibl" target="#TEI2019">TEI Guidelines</ref>,
+                     chapter 16.2.4). Still, the TEI XML mechanisms fall short when held against the
+                     criterion that the encoding method needs to be natively supported and
+                     independent of any vocabulary-specific application layer.</p>
+               </div>
+               <div xml:id="overlap2">
+                  <head>Overlapping textual structures</head>
+                  <p>Considering the amount of attention given to <q>solving</q> the overlap
+                     limitation posed by the XML data structure, it comes as no surprise that this
+                     feature is supported by all alternative encoding approaches. Indeed, some have
+                     been explicitly designed to accommodate more than one co-existing hierarchical
+                     structure. Accordingly, overlapping structures are supported by the
+                     aforementioned EARMARK and TexMECS, but also by the Concurrent XML approach
+                     which also implements a GODDAG structure instead of the single hierarchy tree
+                     model of XML (<ref type="bibl" target="#iacob2005">Iacob and Dekhtyar
+                        2005</ref> and <ref target="#iacob2003" type="bibl">Iacob and Dekhtyar
+                        2003</ref>). Another extension of XML designed to allow overlapping
+                     structures is the Multi-Colored Trees (MCT) approach of <ref type="bibl"
+                        target="#jaga2004">Jagadish et al. 2004</ref>. A single ordered tree is just
+                     like an XML tree, but each colored tree defines its own local order of the
+                     nodes it contains. In the MCT approach, individual nodes can be a part of
+                     multiple colored trees; as a result, one node can be part of multiple
+                     hierarchies. Furthermore, there is XCONCUR of <ref type="bibl"
+                        target="#hil2005">Hilbert et al 2005</ref>, an XML implementation of SGML’s
+                     CONCUR which allows encoders to express concurrent, overlapping markup
+                     hierarchies over the same text nodes (hence the name). Other, non-XML based
+                     data models that allow structures to overlap are the layered markup and
+                     annotation language LMNL of Wendell Piez and Jenni Tennison (<ref type="bibl"
+                        target="#piez2002">2002</ref>), which permits ranges of markup annotations
+                     on a text stream to overlap.</p>
+                  <p>As this section makes clear, the past decades have witnessed multiple
+                     initiatives to model textual features that do not fit naturally into the XML
+                     model. These features include not only the infamous overlapping structures, but
+                     also non-linear or discontinuous text; the initiatives making use of both
+                     XML-based markup or non-XML-based markup. Since the TEI community is most
+                     familiar with the properties of XML and the mono-hierarchical tree model, in
+                     the following this paper will contrast the TAGML examples with XML. </p>
+               </div>
+            </div>
+            <div xml:id="tag">
+               <head>Text-As-Graph Model for text</head>
+               <div xml:id="definition">
+                  <head>TAG Definition of Text</head>
+               </div>
+               <div xml:id="model">
+                  <head>TAG Model</head>
+               </div>
+               <div xml:id="syntax">
+                  <head>TAG Markup Language (TAGML)</head>
+               </div>
+            </div>
+            <div xml:id="expressing-features">
+               <head>Expressing Complex Textual Features in TAGML</head>
+               <div xml:id="nonlinearity3">
+                  <head>Non-linearity</head>
+               </div>
+               <div xml:id="discontinuity3">
+                  <head>Discontinuity</head>
+               </div>
+               <div xml:id="overlap3">
+                  <head>Overlapping Textual Structures</head>
+               </div>
+            </div>
+            <div xml:id="conclusion">
+               <head>Conclusion</head>
+            </div>
+            <div xml:id="discussion">
+               <head>Discussion</head>
+               <!-- this section includes "Future Work" -->
             </div>
          </div>
       </body>
@@ -419,12 +563,46 @@
          <div type="bibliography">
 
             <listBibl>
+               <bibl xml:id="piez2002"><author>Piez, Wendell</author> and <author>Jenni
+                     Tennison</author>. <date>2002></date>. <title level="a">The Layered Markup and
+                     Annotation Language (LMNL)</title>. <title level="m">Proceedings of Extreem
+                     Markup Languages</title>.</bibl>
+
+               <bibl xml:id="hil2005"><author>Hilbert, Mirco</author>, <author>Oliver
+                     Schonefeld</author> and <author>Andreas Witt</author>. <date>2005</date>.
+                     <title level="a">Making CONCUR work.</title><title level="m">Proceedings of
+                     Extreem Markup Languages</title>. </bibl>
+
+               <bibl xml:id="jaga2004"><author>Jagadish, H. V.</author>, <author>Laks
+                     Lakshmanan</author>, <author>M. Scannapieco</author>, <author>D.
+                     Srivastava</author>, and <author>N.
+                     Wiwatwattana</author>.<date>2004</date>.<title>Colorful XML: one hierarchy
+                     isn’t enough.</title> Presented at the SIGMOD conference 2004 in Paris, France.
+                     doi:<idno>https://doi.org/10.1145/1007568.1007598.</idno></bibl>
+
+               <bibl xml:id="iacob2005"><author>Iacob, Ionut Emil</author> and <author>Alex
+                     Dekhtyar</author>. <date>2005</date>
+                  <title level="a">Towards a query language for multihierarchical XML: revisiting
+                     XPath.</title>
+                  <title level="m">Eighth International Workshop on the Web and Databases</title>,
+                  June 16–17, 2005, Baltimore, Maryland, USA. <ref
+                     target="http://users.csc.calpoly.edu/%7Edekhtyar/publications/webdb05.pdf"
+                  /></bibl>
+
+               <bibl xml:id="iacob2003">Iacob, Ionut E. and Alex Dekhtyar. <date>2003</date>.
+                     <title>A framework for management of concurrent XML markup.</title>
+                  <title level="m">XML Schema and Data Management ’03.</title>
+                  <ref
+                     target="http://users.csc.calpoly.edu/%7Edekhtyar/publications/xsdm03.concurrent.pdf"
+                  />
+               </bibl>
+
                <bibl xml:id="dekk2017"><author>Haentjens Dekker, Ronald</author> and <author>David
                      J. Birnbaum</author>. <date>2017</date>. <title level="a">It’s More Than Just
                      Overlap: Text As Graph</title><title level="m">Proceedings of Balisage: The
                      Markup Conference 2017</title><series>Balisage Series on Markup
-                     Technologies</series>, <biblScope unit="volume"
-                     >19</biblScope><date>2017</date><idno>https://doi.org/10.4242/BalisageVol19.Dekker01</idno></bibl>
+                     Technologies</series>, <biblScope unit="volume">19</biblScope>,
+                     doi:<idno>https://doi.org/10.4242/BalisageVol19.Dekker01</idno></bibl>
 
                <bibl xml:id="dekk2018"><author>Haentjens Dekker, Ronald</author>, <author>Elli
                      Bleeker</author>, <author>Bram Buitendijk</author>, <author>Astrid
@@ -432,22 +610,36 @@
                      <title level="a">TAGML: a Markup Language of Many Dimensions</title><title
                      level="m">Proceedings of Balisage: The Markup Conference 2018</title>.
                      <series>Balisage Series on Markup Technologies</series>, <biblScope
-                     unit="volume"
-                     >21</biblScope><idno>https://doi.org/10.4242/BalisageVol21.HaentjensDekker01</idno></bibl>
+                     unit="volume">21</biblScope>,
+                     doi:<idno>https://doi.org/10.4242/BalisageVol21.HaentjensDekker01</idno></bibl>
 
-               <bibl xml:id="sper2008"><author>Sperberg-McQueen, Michael C.M.</author> and
-                     <author>Claus Huitfeldt</author>. <date>2008</date>
+               <bibl xml:id="sper2008"><author>Sperberg-McQueen, Michael</author> and <author>Claus
+                     Huitfeldt</author>. <date>2008</date>
                   <title level="a">Markup Discontinued. Discontinuity in TexMecs, GODDAG Structures,
                      and Rabbit/Duck Grammars</title><title level="m">Proceedings of Balisage: The
                      Markup Conference 2008</title>. <series>Balisage Series on Markup
-                     Technologies</series>, <biblScope unit="volume"
-                     >1</biblScope><idno>https://doi.org/10.4242/BalisageVol1.Sperberg-McQueen01</idno></bibl>
+                     Technologies</series>, <biblScope unit="volume">1</biblScope>,
+                     doi:<idno>https://doi.org/10.4242/BalisageVol1.Sperberg-McQueen01</idno></bibl>
+
+               <bibl xml:id="huit2003"><author>Huitfeldt, Claus</author> and
+                     <author>Sperberg-McQueen, Michael</author>. <date>2001</date>, revised
+                     <date>2003</date>. <title>TexMECS: An experimental markup meta-language for
+                     complex documents</title>. <ref
+                     target="http://mlcd.blackmesatech.com/mlcd/2003/Papers/texmecs.html"/></bibl>
+
+               <bibl xml:id="huit2006"><author>Huitfeldt, Claus</author> and
+                     <author>Sperberg-McQueen, Michael</author>. <date>2006</date>. <title level="a"
+                     >Representation and processing of Goddag structures: implementation strategies
+                     and progress report</title>. <title level="m">Proceedings of Extreem Markup
+                     Languages 2006</title><ref
+                     target="http://conferences.idealliance.org/extreme/html/2006/Huitfeldt01/EML2006Huitfeldt01.html"
+                  /></bibl>
 
                <bibl xml:id="per2009"><author>Peroni, Sylvio</author> and <author>Fabio
                      Vitali</author>. <date>2009</date>. <title>Annotations with EARMARK for
                      Arbitrary, Overlapping and Out-of-Order Markup</title>. <title level="m"
                      >Proceedings of the 2009 ACM Symposium on Document Engineering</title>.
-                     <idno>﻿10.1145/1600193.1600232</idno></bibl>
+                     <idno>10.1145/1600193.1600232</idno></bibl>
 
                <bibl xml:id="woolf1927"><author>Woolf, Virginia</author>. <date>1927</date>.
                      <title>To the Lighthouse</title>, Holograph ms. Berg Collection, New York
@@ -492,6 +684,27 @@
                      as an alternative to XML for digital historical editions</title>. <ref
                      target="https://discourse.suttacentral.net/uploads/default/original/2X/6/6056afc3c25fcf0e9b3e677c04ea4bc34b8151ab.pdf"
                   /></bibl>
+
+               <bibl xml:id="piez2008"><author>Piez, Wendell</author>. <date>2008</date>.
+                     <title>LMNL in Miniature: an Introduction</title>. <ref
+                     target="http://piez.org/wendell/LMNL/Amsterdam2008/presentation-slides.html"
+                     >Paper</ref> given at the Amsterdam GODDAG workshop, 1 to 5 December
+                  2008.</bibl>
+
+               <bibl xml:id="huit2012"><author>Marcoux, Yves</author>, <author>Claus
+                     Huitfeldt</author> and <author>Michael Sperberg-McQueen</author>.
+                     <date>2012</date>. <title level="a">The MLCD Overlap Corpus (MOC): Project
+                     Report</title>. <title level="m">Proceedings of Balisage: The Markup Conference
+                     2012</title>. <series>Balisage Series on Markup Technologies</series>,
+                     <biblScope unit="volume">8</biblScope>
+                     doi:<idno>https://doi.org/10.4242/BalisageVol8.Huitfeldt02.</idno></bibl>
+
+               <bibl xml:id="iorio2009"><author>Di Iorio, Angelo</author>, <author>Silvio
+                     Peroni</author> and <author>Fabio Vitali</author>. <date>2009</date>. <title
+                     level="a">Towards markup support for full GODDAGs and beyond: the EARMARK
+                     approach</title>. <series>Balisage Series on Markup Technologies</series>,
+                     <biblScope unit="volume">vol. 3</biblScope>. doi:<idno type="doi"
+                     >https://doi.org/10.4242/BalisageVol3.Peroni01</idno>.</bibl>
             </listBibl>
          </div>
       </back>
