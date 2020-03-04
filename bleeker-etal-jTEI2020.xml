@@ -331,10 +331,86 @@
                      separate expressions. <figure xml:id="discontinuity1">
                         <graphic url="img/discontinuity1.png" width="680px" height="980px"/>
                         <head type="legend">An example of discontinuity in a running text (<ref
-                              target="#Watanna1916" type="bibl">Watanna 1916, p.171</ref>)</head>
+                              target="#watanna1916" type="bibl">Watanna 1916, p.171</ref>)</head>
                         <head type="license"/>
                      </figure></p>
                </div>
+               <div xml:id="overlap">
+                  <head>Overlapping textual structures</head>
+                  <p>One of the most (in)famous examples of textual characteristics that do not fit
+                     naturally in the prevalent XML data model for text, is the case of multiple and
+                     overlapping structures. As a result, simply mentioning the word
+                        <term>overlap</term> at a TEI conference or a Balisage Markup conference is
+                     sure to get everyone’s attention. As textual genetic scholars are equally
+                     interested in both the material, documentary aspects as well as the sequential,
+                     textual aspects of a given work, they are well familiar with the challenge of
+                     modeling co-existing and/or overlapping text structures (<ref
+                        target="#dillen2015" type="bibl">Dillen 2015</ref>, namely chapter 2.3, 2.4,
+                     and 5.2; <ref target="#bleeker2017" type="bibl">Bleeker 2017</ref>, namely
+                     chapter 1.3, 2.2, and 4.2).</p>
+                  <p><ref type="crossref" target="#discontinuity2-1">Figure 5</ref> presents a good
+                     example, found on a 1930 typescript of Sheherazade, of: Wat is liefde zonder
+                     verleiding (Sheherazade, or: what is love without seduction) by writer Raymond
+                     Brulez. During the revision of his own typescript, the author decided to cross
+                     out two entire paragraphs that also cross document borders. <figure
+                        xml:id="discontinuity2-1">
+                        <graphic url="img/discontinuity2-1.jpg" width="170px" height="245px"/>
+                        <head type="legend">Another example of discontinuity with two deleted
+                           paragraphs running over a document border, from the quarto typescript of
+                              <title>Sheherazade</title> (<ref type="bibl" target="#brulez1927"
+                              >Brulez</ref> 1927), p.3.</head>
+                        <head type="license"/>
+                     </figure>
+                     <figure xml:id="discontinuity2-2">
+                        <graphic url="img/discontinuity2-2.jpg" width="170px" height="245px"/>
+                        <head type="legend">Another example of discontinuity with two deleted
+                           paragraphs running over a document border, from the quarto typescript of
+                              <title>Sheherazade</title> (<ref type="bibl" target="#brulez1927"
+                              >Brulez</ref> 1927), p.4.</head>
+                        <head type="license"/>
+                     </figure></p>
+                  <p>Taken together, the examples in this section show that in order to properly
+                     support textual genetic analysis, then, a data model needs to understand that
+                     information can be non-linear, discontinuous, or that it may have multiple,
+                     co-existing structures. Evidently, this is not a novel conclusion: almost a
+                     soon as the OHCO model of XML had been introduced to the text encoding
+                     community, researchers have tried to come up with alternative data models that
+                     would be a better fit for the notion of text as a multi-hierarchical (or
+                     hierarchy-less) data structure.<note> Again, it’s not within the scope of the
+                        present article to give a comprehensive overview of these alternative
+                        models. Those interested in this discussion will find the work of Allen H.
+                        Renear et al. a useful starting point, or to take a look at the MLCD Overlap
+                        Corpus, which stems from the project Markup Languages for Complex Documents
+                           (<ref
+                           target="https://ischool.illinois.edu/research/projects/markup-languages-complex-documents"
+                           >MLCD</ref>).We can also recommend <ref
+                           target="http://www.balisage.net/Proceedings/topics/Concurrent_Markup~Overlap.html"
+                           >searching for the topic</ref>
+                        <term>overlap</term> within the proceedings of Balisage, the markup
+                        conference.</note></p>
+               </div>
+            </div>
+            <div xml:id="related-work">
+               <head>Relevant Related Work</head>
+               <p>Scholars have been working on topics like text modeling, text encoding, and markup
+                  for decades, hence they are well-aware of the difficulties of representing complex
+                  textual characteristics in an effective way. With <q>effective</q>, we mean
+                     <q>with little to no additional workarounds or bespoke technical solutions</q>.
+                  Because, as Fabio Vitali argued (<ref type="bibl" target="#vitali2016">Vitali
+                     2016</ref>), one can theoretically use any datamodel to express any kind of
+                  text, no matter how complex, as long as one is willing to use some workarounds, do
+                  some extra coding, and handover certain tasks to other data formats. However, as
+                  many have pointed out, TEI XML has a wide variety of different mechanisms to
+                  express a textual feature, and no XML processor will be able to correctly
+                  interpret these mechanisms unless it depends on a schema or some other document
+                  that explains the intended meaning (among others, see <ref type="bibl"
+                     target="#schmidt">Schmidt</ref>; <ref type="bibl" target="#sper2008"
+                     >Sperberg-McQueen and Huitfeldt 2008</ref>; <ref target="#per2009" type="bibl"
+                     >Peroni and Vitali 2009</ref>; <ref target="#dekk2017" type="bibl">Dekker and
+                     Birnbaum 2017</ref>). In this contribution, we maintain the argument that the
+                  more workarounds and handovers required, the more difficult it becomes to process
+                  or query the text, and the less interchangeable or reuseable the encoded text
+                  becomes.</p>
             </div>
          </div>
       </body>
@@ -386,10 +462,36 @@
                      target="http://www.tei-c.org/Vault/P5/2.5.0/doc/tei-p5-doc/en/html/">TEI
                      Consortium</ref>.</bibl>
 
-               <bibl xml:id="Watanna1916"><author>Watanna, Onoto</author>. <date>1916</date>.
+               <bibl xml:id="watanna1916"><author>Watanna, Onoto</author>. <date>1916</date>.
                      <title>Marion, the Story of an Artist’s Model</title>. <pubPlace>New
                      York</pubPlace>: <publisher>W.J. Watt</publisher>.
-                     <idno>urn:oclc:record:1048793515</idno>.</bibl>
+                     <idno>u#rn:oclc:record:1048793515</idno>.</bibl>
+
+               <bibl xml:id="dillen2015"><author>Dillen, Wout</author>. <date>2015</date>.
+                     <title>Digital Scholarly Editing for the Genetic
+                     Orientation</title><publisher>University of Antwerp</publisher>, PhD
+                  dissertation. <ref target="https://repository.uantwerpen.be/desktop/irua"/></bibl>
+
+               <bibl xml:id="bleeker2017"><author>Bleeker, Elli</author>.
+                     <date>2017</date>.<title>Mapping Invention in Writing: Digital Infrastructure
+                     and the Role of the Genetic Editor</title>. <publisher>University of
+                     Antwerp</publisher>, PhD dissertation. <ref
+                     target="https://repository.uantwerpen.be/docman/irua/e959d6/155676.pdf"/>
+                  /></bibl>
+
+               <bibl xml:id="brulez1927"><author>Brulez, Raymond</author>. <date>1927</date>.
+                     <title>Sheherazade of Literatuur als Losprijs</title>, typescript quarto.
+                     <idno>AMVC Letterenhuis B917/H2bis</idno>.</bibl>
+
+               <bibl xml:id="vitali2016"><author>Vitali, Fabio</author>. <date>2016</date>.
+                     <title>The Expressive Power of Digital Formats</title>. Workshop <ref
+                     target="http://dixit.uni-koeln.de/wp-content/uploads/Vitali_Digital-formats.pdf"
+                     >presentation </ref>at the DiXiT convention 2 University of Cologne.</bibl>
+
+               <bibl xml:id="schmidt"><author>Schmidt, Desmond</author>. <title>Standoff properties
+                     as an alternative to XML for digital historical editions</title>. <ref
+                     target="https://discourse.suttacentral.net/uploads/default/original/2X/6/6056afc3c25fcf0e9b3e677c04ea4bc34b8151ab.pdf"
+                  /></bibl>
             </listBibl>
          </div>
       </back>
