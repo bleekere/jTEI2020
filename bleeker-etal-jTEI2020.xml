@@ -182,8 +182,27 @@
                addresses the theoretical and practical implications of using TAGML to express the
                example texts from the first section. By contrasting the TAG model with the TEI XML
                model, the article illustrates how a text encoded in TAGML is understood and
-               processed in a way that is closer to the genetic scholar’s understanding of the text.
-               <!-- add: nice concluding sentence - how wonderful is it all --></p>
+               processed in a way that is closer to the genetic scholar’s understanding of the
+               text.</p>
+            <p>Before we proceed, it will be good to clarify what we understand by the terms
+                  <term>text</term>, <term>information</term> and <term>data</term>. These concepts
+               are sometimes used interchangeably; depending on the context they may refer to the
+               same thing, or not. In an attempt to avoid confusion, this contribution uses
+                  <term>text</term> for the inscriptions that can be found on source documents and
+               that carry a certain meaning which is derived by the reader. Text can be
+               informationally expressed as a character sequence of letters, spaces and punctuation.
+               In XML terminology this is described as <term>PCDATA</term> or <term>parseable
+                  character data</term>. If the PCDATA is insufficient to represent the combination
+               of material aspects and background knowledge that together form a reader’s
+               understanding of text, markup can be used. Transforming your knowledge and
+               understanding of a text into a machine-readable data format – a string of characters,
+               a tree, or a graph – inevitably entails a reduction and a loss of information. That
+               is innate to modeling and, as phrased by Franco Moretti, it is exactly the poverty of
+               models that makes it possible to handle them (<ref target="#moret2000" type="bibl"
+                  >Moretti 2000</ref>). In principle, this truism applies to any type of models,
+               whether it’s a globe of planet earth or a transcription of a Sumerian clay tablet.
+               Nevertheless, as this contribution will demonstrate, there is much value in using a
+               data model that matches our conceptual understanding of the object we model.</p>
          </div>
          <div xml:id="genetic-research">
             <head>Textual Genetic Research and Text Modeling</head>
@@ -529,6 +548,7 @@
                <head>Text-As-Graph Model for text</head>
                <div xml:id="definition">
                   <head>TAG Definition of Text</head>
+                  <p/>
                </div>
                <div xml:id="model">
                   <head>TAG Model</head>
@@ -563,6 +583,12 @@
          <div type="bibliography">
 
             <listBibl>
+
+               <bibl xml:id="moret2000"><author>Moretti, Franco</author>. <date>2000</date>. <title
+                     level="a">Conjectures on World Literature</title>. <title level="m">New Left
+                     Review</title>, <biblScope unit="volume">2</biblScope>, <ref
+                     target="https://newleftreview.org/II/1/franco-moretti-conjectures-on-world-literature "
+                     >online </ref>available.</bibl>
                <bibl xml:id="piez2002"><author>Piez, Wendell</author> and <author>Jenni
                      Tennison</author>. <date>2002></date>. <title level="a">The Layered Markup and
                      Annotation Language (LMNL)</title>. <title level="m">Proceedings of Extreem
