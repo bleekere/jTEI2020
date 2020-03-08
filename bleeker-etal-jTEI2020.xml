@@ -336,7 +336,7 @@
                         meaning. <!-- TODO: voorbeeld toevoegen --></p>
                   </div>
                </div>
-               <div xml:id="Discontinuity">
+               <div xml:id="discontinuity">
                   <head>Discontinuity</head>
                   <p>Discontinuity happens when a text forms semantically a single continuous
                      utterance, but is interrupted by other elements. The example in figure 4 is
@@ -369,25 +369,24 @@
                         target="#dillen2015" type="bibl">Dillen 2015</ref>, namely chapter 2.3, 2.4,
                      and 5.2; <ref target="#bleeker2017" type="bibl">Bleeker 2017</ref>, namely
                      chapter 1.3, 2.2, and 4.2).</p>
-                  <p><ref type="crossref" target="#discontinuity2-1">Figure 5</ref> presents a good
-                     example, found on a 1930 typescript of Sheherazade, of: Wat is liefde zonder
-                     verleiding (Sheherazade, or: what is love without seduction) by writer Raymond
-                     Brulez. During the revision of his own typescript, the author decided to cross
-                     out two entire paragraphs that also cross document borders. <figure
+                  <p><ref type="crossref" target="#discontinuity2-1">Figure 5</ref> and <ref
+                        type="crossref" target="#discontinuity2-2">figure 6</ref> present a good
+                     example, found on the pages of a 1929 typescript of <title>Sheherazade, of: Wat
+                        is liefde zonder verleiding</title> (Sheherazade, or: what is love without
+                     seduction) by writer Raymond Brulez. During the revision of his own typescript,
+                     the author decided to cross out two entire paragraphs that also cross document
+                     borders. As a consequence, there are at least two overlapping structures: the
+                     deletion of two paragraphs that run over document borders. <figure
                         xml:id="discontinuity2-1">
                         <graphic url="img/discontinuity2-1.jpg" width="170px" height="245px"/>
-                        <head type="legend">Another example of discontinuity with two deleted
-                           paragraphs running over a document border, from the quarto typescript of
-                              <title>Sheherazade</title> (<ref type="bibl" target="#brulez1927"
-                              >Brulez</ref> 1927), p.3.</head>
+                        <head type="legend">The quarto typescript of <title>Sheherazade</title>
+                              (<ref type="bibl" target="#brulez1927">Brulez</ref> 1927), p.3.</head>
                         <head type="license"/>
                      </figure>
                      <figure xml:id="discontinuity2-2">
                         <graphic url="img/discontinuity2-2.jpg" width="170px" height="245px"/>
-                        <head type="legend">Another example of discontinuity with two deleted
-                           paragraphs running over a document border, from the quarto typescript of
-                              <title>Sheherazade</title> (<ref type="bibl" target="#brulez1927"
-                              >Brulez</ref> 1927), p.4.</head>
+                        <head type="legend">The quarto typescript of <title>Sheherazade</title>
+                              (<ref type="bibl" target="#brulez1927">Brulez</ref> 1927), p.4.</head>
                         <head type="license"/>
                      </figure></p>
                   <p>Taken together, the examples in this section show that in order to properly
@@ -651,8 +650,10 @@
                      characters are used to indicate the start and the end of a TAGML markup tag.
                      For every open tag, there should be a corresponding closing tag. <figure
                         xml:id="example_tagml_1">
-                        <eg>&#91;root&#62; &#91;p&#62; Some text here &#60;p&#93; &#60;root&#93; </eg>
-                        <head type="legend">A simple TAGML document.</head>
+                        <eg>&#91;root&#62; &#91;p&#62; Some text here &#60;p&#93;
+                           &#60;root&#93;</eg>
+                        <head type="legend">A simple TAGML document with a root node and a paragraph
+                           node containing text.</head>
                      </figure>The looks of TAGML may ressemble those of existing markup languages
                      like XML, TexMECS or LMNL, but TAGML is in many ways more expressive. For
                      instance, in XML all annotation values are plain text, but TAGML offers
@@ -666,14 +667,59 @@
                         al. 2018</ref>. For the purposes of this contribution, it suffices to know
                      that where the TAG model presents a more powerful and inclusive data model for
                      text, TAGML offers encoders the chance to express their interpretation of that
-                     text in a more refined and explicit way. </p>
+                     text in a more refined and explicit way. The following three sections
+                     illustrate how the complex textual features highlighted in this article can be
+                     expressed in TAGML.</p>
                </div>
             </div>
             <div xml:id="expressing-features">
                <head>Expressing Complex Textual Features in TAGML</head>
-               <p/>
+               <p>While there are different mechanisms to encode the textual features in this
+                  section – TEI XML, TexMECS, LMNL – we assume that the TEI community is most
+                  familiar with the properties of XML and its mono-hierarchical tree model.
+                  Therefore, we will contrast the TAGML examples with XML examples. Each of the
+                  three sections below section combines a syntactical representation (TEI XML and
+                  TAGML) with a visualisation of how the textual information is stored the
+                  underlying datamodels (a tree and a hypergraph). For reasons of clarity and
+                  readability, the markup examples are simplified.
+                  <!-- Toevoegen: These are simple examples, TAGML can also handle complex cases --></p>
                <div xml:id="nonlinearity3">
                   <head>Non-linearity</head>
+                  <div xml:id="deletion2">
+                     <head>Deletion</head>
+                     <p>As explained in the section on <ref type="crossref" target="#nonlinearity"
+                           >non-linearity</ref> above, in-text revisions like deletions form a clear
+                        example of non-linear textual structures. They can be described as two
+                        simultaneous paths through a text, one path including the deleted characters
+                        and one path without the deleted characters. In the Woolf-example, the
+                           <gi>del</gi> marks the beginning of the forking of these paths. This
+                        could be expressed in TEI XML as follows <egXML
+                           xmlns="http://www.tei-c.org/ns/Examples"><root> ... difference of
+                              opinion, <del>impossible barriers</del> prejudices ... </root></egXML>
+                        The TAGML notation looks quite similar: <eg>&#91;root&#62; ... difference of
+                           opinion, &#91;?del&#62; impossible barriers &#60;?del&#93; prejudices...
+                           &#60;root&#93;</eg>. However, the <eg>del</eg> is marked as
+                           <term>optional</term> to indicate there are two paths: one with the text
+                        marked up by <eg>del</eg>, and one without. This subtle yet important
+                        difference becomes more clear in a visualition: <figure xml:id="XML-del">
+                           <graphic url="img/single-del-xml.png" width="310px" height="490px"/>
+                           <head type="legend">Representation of the XML tree of the code
+                              example.</head>
+                           <head type="license"/>
+                        </figure>
+                        <figure xml:id="TAGML-del">
+                           <graphic url="img/single-del-tagml.png" width="410px" height="490px"/>
+                           <head type="legend">Representation of the TAGML hypergraph of the code
+                              example. The graph is read from left to right, similar to a regular
+                              variant graph, starting with the Document root node. The Markup nodes
+                                 <q>root</q> and <q>del</q> are connected to the relevant Text nodes
+                              by means of a hyperedge. The visualisation clearly shows the two paths
+                              or <term>branches</term> through the text. </head>
+                           <head type="license"/>
+                        </figure>
+                     </p>
+                  </div>
+                  <div xml:id="immediate-del2"><head>Immediate deletion</head><p></p></div>
                </div>
                <div xml:id="discontinuity3">
                   <head>Discontinuity</head>
