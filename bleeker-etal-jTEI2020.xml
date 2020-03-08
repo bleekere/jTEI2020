@@ -895,8 +895,8 @@
                      </list>. A simplification of the transcription would look as follows: <figure
                         xml:id="example-tagml-layers">
                         <eg>[root|+T,+D> [page|D> [del|T> [s|T,D> [! some text !] &lt;s] &lt;-del]
-                           &lt;page] [page|D> [+del|T> [s|T,D> [! some text !] &lt;s] &lt;del] &lt;page]
-                           &lt;root]</eg>
+                           &lt;page] [page|D> [+del|T> [s|T,D> [! some text !] &lt;s] &lt;del]
+                           &lt;page] &lt;root]</eg>
                         <head type="legend">A simplified example of encoding discontinuous and
                            overlapping structures in TAGML.</head>
                      </figure>If we look once more at the visualisations of the underlying data
@@ -924,20 +924,53 @@
             </div>
             <div xml:id="conclusion">
                <head>Conclusion</head>
-               <p><!-- Something like: Following the truisms that encoding is modeling and that encoding implies
-                  communicating an interpretation, we aim to demonstrate how TAGML provides editors
-                  with more eloquence in expressing their interpretation of the variance as well as
-                  the creative process.TAG’s graph model required us to invent a new markup language
-                  with which you could tag those complex textual occurrences we mentioned above:
-                  different coexisting structures, discontinuous elements, etc. A markup language is
+               <p> One of the holy grails of computer science, according to professor computer
+                  science Teresa Nakra, is to algorithmically express the natural world (quoted in
+                     <ref type="bibl" target="#david2006">Davidson 2006</ref>). The natural world is
+                  ambiguous, complex, and open to many co-existing interpretations. A computer
+                  model, on the contrary, demands clear and explicitly encoded information. Still,
+                  over three decades of developing various data models for text encoding have
+                  brought us a long way towards that holy grail and we are still on the move. The
+                  fields of text encoding, markup, and document modeling continue to thrive; despite
+                  its current implementation of XML, the TEI community maintains an openness and
+                  curiosity toward alternative data models
+                  (<!-- add refs to Ciotti and Pierazzo -->. Past initiatives like LMNL, TexMECS and
+                  EARMARK have demonstrated how closely technical developments and philosophical
+                  reflections interact: data models influence our conceptualisation of text – and
+                  vice versa. <!-- tot hier --> Contribution of this paper: more than a tool
+                  presentation, also reflections on ongoing research into text modeling and markup <!-- quote Wendell -->
+                  <quote source="#quoteref7">we encode texts and represent them digitally in order to
+                     present, examine, study, and reflect on the rich heritage of knowledge and
+                     expression presented to us in our cultural legacy</quote>(<ref xml:id="quoteref7" target="#piez2014" type="bibl">Piez 2014</ref>).
+                  <!-- summary --> The paper aimed to demonstrate that the TAG data model and the
+                  corresponding TAGML syntax provides editors with more eloquence in expressing
+                  their interpretation of a text. We argue that the functionalities of TAG
+                  consequentially influence how we model, think about, process and analyse text. TAG
+                  offers text encoders and editors a powerful tool that allows for the encoding of <list>
+                     <item>multiple co-existing (and potentially overlapping) views on a text</item>
+                     <item>nonlinear or discontinuous structures</item>
+                     <item>different data types</item>
+                  </list>. Furthermore, the software package of TAG is open source and designed to
+                  be implemented in existing editorial workflows. <!-- limitations of paper --> We
+                  used examples from textual genetic studies, since scholars working in that field
+                  are regularly confronted with the need to model complex textual features. Still,
+                  it is easy to imagine how TAG and TAGML can be implemented in other fields and for
+                  other research objectives: any textual scholar will be familiar with discontinuous
+                  and overlapping structures, modeling nonlinear information, or adding multiple
+                  layers of markup over the same text. The scope of the paper was necessarily
+                  limited in that it only looked at four simple examples, while cultural heritage
+                  text often present much more complicated cases, such as additions in additions or
+                  open variants. Readers are referred to the TAGML documentation and encouraged to
+                  experiment with TAG and TAGML themselves. In spite of this limitation, the paper
+                  adds to our understanding of data models for text. <!-- future work --> Further
+                  development of the TAG model concentrates on (1) validation and (2) querying. Open
+                  variants in TAGML and the need to address markup elements Export functionality:
+                  implementing TAG in an existing (XML/TEI-based) workflow
+                  <!-- A markup language is
                   more than just a syntax: it also requires a schema – to validate the syntax – and
-                  a query language to, well, query the documents. -->
-               </p>
+                  a query language to, well, query the documents. --></p>
             </div>
-            <div xml:id="discussion">
-               <head>Discussion</head>
-               <!-- this section includes "Future Work" -->
-            </div>
+
          </div>
       </body>
 
@@ -949,6 +982,10 @@
                <bibl xml:id="pier2015"><author>Pierazzo, Elena</author>. <date>2015</date>.
                      <title>Digital Scholarly Editing: Theories, Models and Methods.</title>
                   <pubPlace>Surrey</pubPlace>: <publisher>Ashgate</publisher>.</bibl>
+
+               <bibl xml:id="david2006"><author>Davidson, Justin</author>. <date>2006</date>. <title
+                     level="a">Measure for Measure: Exploring the Mysteries of Conducting</title>.
+                     <title level="m">The New Yorker</title>, pp. 60–69.</bibl>
 
                <bibl xml:id="moret2000"><author>Moretti, Franco</author>. <date>2000</date>. <title
                      level="a">Conjectures on World Literature</title>. <title level="m">New Left
@@ -1088,6 +1125,12 @@
                      as an alternative to XML for digital historical editions</title>. <ref
                      target="https://discourse.suttacentral.net/uploads/default/original/2X/6/6056afc3c25fcf0e9b3e677c04ea4bc34b8151ab.pdf"
                   /></bibl>
+
+               <bibl xml:id="piez2014"><author>Piez, Wendell.</author>
+                  <date>2014</date>. <title level="a">TEI in LMNL: Implications for Modeling</title>
+                  <title level="m">Journal of the Text Encoding Initiative</title>, <biblScope
+                     unit="issue">8</biblScope>,
+                  DOI:<idno>https://doi.org/10.4000/jtei.1337</idno></bibl>
 
                <bibl xml:id="piez2008"><author>Piez, Wendell</author>. <date>2008</date>.
                      <title>LMNL in Miniature: an Introduction</title>. <ref
