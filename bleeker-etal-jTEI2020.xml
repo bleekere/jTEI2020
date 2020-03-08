@@ -279,7 +279,11 @@
                            prejudices</q>.<figure xml:id="single_deletion">
                            <graphic url="img/single_deletion.png" width="620px" height="980px"/>
                            <head type="legend">A single deletion. Fol. 27; SD p. 13.</head>
-                           <head type="license"/>
+                           <head type="license">The authors are grateful to and acknowledge the
+                              Society of Authors as the Literary Representative of the Estate of
+                              Virginia Woolf. You may not use the Woolf material for commercial
+                              purposes. Please credit the copyright holder when reusing this work.
+                           </head>
                         </figure></p>
                   </div>
                   <div xml:id="immediate-del">
@@ -296,7 +300,6 @@
                            <graphic url="img/immediate_del.png" width="620px" height="980px"/>
                            <head type="legend">An immediate deletion. Fol. 7; SD p. 3; Names to be
                               used.</head>
-                           <head type="license"/>
                         </figure></p>
                   </div>
                   <div xml:id="grouped-rev">
@@ -318,7 +321,6 @@
                            sentence.<figure xml:id="grouped_rev">
                            <graphic url="img/grouped_rev.png" width="680px" height="980px"/>
                            <head type="legend">A grouped revision. Fol. 13; SD p. 6.</head>
-                           <head type="license"/>
                         </figure></p>
                   </div>
                   <div xml:id="other-cases">
@@ -331,9 +333,9 @@
                         instance, have a similar effect of partially ordered information: they group
                         together <quote source="#quoteref3">a number of alternative encodings for
                            the same point in a text</quote> (<ref type="bibl" xml:id="quoteref3"
-                           target="#TEI2019">TEI P5, chapter 3.4</ref>. As a consequence,he contents
-                        of the <gi>choice</gi> element are placed have no influence on the semantic
-                        meaning. <!-- TODO: voorbeeld toevoegen --></p>
+                           target="#TEI2019">TEI P5, chapter 3.4</ref>. As a consequence, he
+                        contents of the <gi>choice</gi> element are placed have no influence on the
+                        semantic meaning. <!-- TODO: voorbeeld toevoegen --></p>
                   </div>
                </div>
                <div xml:id="discontinuity">
@@ -353,7 +355,7 @@
                         <graphic url="img/discontinuity1.png" width="680px" height="980px"/>
                         <head type="legend">An example of discontinuity in a running text (<ref
                               target="#watanna1916" type="bibl">Watanna 1916, p.171</ref>)</head>
-                        <head type="license"/>
+                        <head type="license">Work is in public domain.</head>
                      </figure></p>
                </div>
                <div xml:id="overlap">
@@ -677,11 +679,20 @@
                <p>While there are different mechanisms to encode the textual features in this
                   section – TEI XML, TexMECS, LMNL – we assume that the TEI community is most
                   familiar with the properties of XML and its mono-hierarchical tree model.
-                  Therefore, we will contrast the TAGML examples with XML examples. Each of the
-                  three sections below section combines a syntactical representation (TEI XML and
-                  TAGML) with a visualisation of how the textual information is stored the
-                  underlying datamodels (a tree and a hypergraph). For reasons of clarity and
-                  readability, the markup examples are simplified.
+                  Therefore, we will contrast the TAGML examples with XML examples. There’s at least
+                  three important points on which TAGML diverges from XML:<list rend="ordered">
+                     <item>it has asymmetrical tags: <eg>&#91;markup&#62; some text
+                           &#60;markup&#93;</eg></item>
+                     <item>you can use it to express not just strings and markup, but other data
+                        types as well, like numbers or boolean values: <eg>&#91;poem
+                           type=&#39;limerick&#39; year=1818 rhymes=true&#62; some text
+                           &#60;poem&#93;</eg></item>
+                     <item>you can nest annotations: <eg>&#91;origin location={position={x=1 y=2}
+                           country=&#39;nl&#39;}&#62; Amsterdam &#60;origin&#93;</eg></item>
+                  </list> Each of the three sections below section combines a syntactical
+                  representation (TEI XML and TAGML) with a visualisation of how the textual
+                  information is stored the underlying datamodels (a tree and a hypergraph). For
+                  reasons of clarity and readability, the markup examples are simplified.
                   <!-- Toevoegen: These are simple examples, TAGML can also handle complex cases --></p>
                <div xml:id="nonlinearity3">
                   <head>Non-linearity</head>
@@ -698,14 +709,14 @@
                               opinion, <del>impossible barriers</del> prejudices ... </root></egXML>
                         The TAGML notation looks quite similar: <eg>&#91;root&#62; ... difference of
                            opinion, &#91;?del&#62; impossible barriers &#60;?del&#93; prejudices...
-                           &#60;root&#93;</eg>. However, the <eg>del</eg> is marked as
-                           <term>optional</term> to indicate there are two paths: one with the text
-                        marked up by <eg>del</eg>, and one without. This subtle yet important
-                        difference becomes more clear in a visualition: <figure xml:id="XML-del">
+                           &#60;root&#93;</eg>. Note however that the <eg>del</eg> is marked as
+                           <term>optional</term> by preceeding it with a <q>?</q>. This indicates
+                        that there are two paths through the text: one with the text marked up by
+                           <eg>del</eg>, and one without. This subtle yet important difference
+                        becomes more clear in a visualition: <figure xml:id="XML-del">
                            <graphic url="img/single-del-xml.png" width="310px" height="490px"/>
                            <head type="legend">Representation of the XML tree of the code
                               example.</head>
-                           <head type="license"/>
                         </figure>
                         <figure xml:id="TAGML-del">
                            <graphic url="img/single-del-tagml.png" width="410px" height="490px"/>
@@ -715,21 +726,213 @@
                                  <q>root</q> and <q>del</q> are connected to the relevant Text nodes
                               by means of a hyperedge. The visualisation clearly shows the two paths
                               or <term>branches</term> through the text. </head>
-                           <head type="license"/>
                         </figure>
                      </p>
                   </div>
-                  <div xml:id="immediate-del2"><head>Immediate deletion</head><p></p></div>
+                  <div xml:id="immediate-del2">
+                     <head>Immediate deletion</head>
+                     <p>It is difficult to capture the exact nature of a revision made
+                           <term>currente calamo</term> in XML. The textual feature is usually
+                        encoded by placing an attribute on the <gi>del</gi>, e.g., a <att>rend</att>
+                        with the <val>immediate</val> or a <att>seq</att> with the <val>0</val> to
+                        indicate the revision is part of the first writing spell. The example used
+                        in <ref type="crossref" target="#immediate_del">the section above</ref>
+                        could be encoded in TEI P5 as follows: <egXML
+                           xmlns="http://www.tei-c.org/ns/Examples"><root><del seq="0">This</del>
+                              the idea has grown ...</root></egXML>. Without an application-level
+                        schema, however, an XML processor would have no way of knowing what the
+                        attributes <att>rend</att> or <att>seq</att> represent. In TAGML, it is
+                        possible to make this subtle distinction: <eg>&#91;root&#62;
+                           &#91;del&#62;This&#60;del&#93; The idea has grown... &#60;root&#93;</eg>.
+                        By omitting the <q>?</q> we indicate that the <q>del</q> tag is not
+                        optional: it is part of the sentence and there is just one path through the
+                        text. We see this clearly by contrasting the XML tree with the hypergraph
+                        visualisation: <figure xml:id="XML-immediate-del">
+                           <graphic url="img/currente-del-xml.png" width="310px" height="490px"/>
+                           <head type="legend">Representation of the XML tree of the code example of
+                              the immediate deletion. To an XML processor that does not have access
+                              to additional information in the application layer, the immediate
+                              deletion is undistinguishable from a regular deletion.</head>
+                        </figure>
+                        <figure xml:id="TAGML-immediate-del">
+                           <graphic url="img/currente-del-tagml.png" width="410px" height="490px"/>
+                           <head type="legend">Representation of the TAGML hypergraph of the code
+                              example of the immediate deletion. The Markup nodes <q>root</q> and
+                                 <q>del</q> are connected to the relevant Text nodes by means of a
+                              hyperedge. The visualisation clearly shows that there is just one path
+                              through the text, which corresponds closely to how we interpreted the
+                              source manuscript.</head>
+                        </figure></p>
+                  </div>
+                  <div xml:id="grouped-rev2">
+                     <head>Grouped Revision</head>
+                     <p>As for grouped revisions, we already noted that TEI guidelines suggest to
+                        use the <gi>subst</gi> element to gather <gi>del</gi> and <gi>add</gi> if
+                        the encoder believes they belong together semantically. The TEI Guidelines
+                        write that <quote source="#quoteref6">the purpose of this element is solely
+                           to group its child elements together, the order in which they are
+                           presented is not significant.</quote><ref xml:id="quoteref6" type="bibl"
+                           target="#TEI2019">TEI P5, chapter 11.3.1.5</ref>. In other words: the
+                           <gi>subst</gi> element functions as an indication of a split in the
+                        text’s stream. This is very similar to the TAGML mechanism to encode a split
+                        (a <term>branching</term>) in the text’s stream: the divergence of the text
+                        stream is flagged with <eg>&#60; &#124;</eg>, the individual branches are
+                        separated with a vertical bar <eg>&#124;</eg> and the converging of the
+                        branches is indicated with a <eg>&#124; &#62;</eg>. The grouped revision
+                        example given <ref type="crossref" target="#grouped_rev">above</ref> can
+                        therefore be transcribed as follows in TEI XML: <egXML
+                           xmlns="http://www.tei-c.org/ns/Examples"><root> ... for being
+                                    <subst><del>so</del><add>certainly</add></subst> disagreeable
+                              ...</root></egXML>. In TAGML notation: <eg>&#91;root&#62; ... for
+                           being &#60; &#124; &#91;del&#62;so&#60;del&#93; &#124;
+                           &#91;add&#62;certainly&#60;add&#93; &#124; &#62; disagreeable...
+                           &#60;root&#93;</eg>. On the level of the data model, though, there are
+                        significant differences. <figure xml:id="XML-grouped-rev">
+                           <graphic url="img/grouped-revision-xml.png" width="310px" height="490px"/>
+                           <head type="legend">Representation of the XML tree of the code example of
+                              the grouped revision. If the text nodes in this XML tree would be
+                              parsed, they would be considered ordered. Again, an XML processor
+                              needs to have access to additional information in the application
+                              layer before it knows that the <gi>subst</gi> tag indicates a
+                              momentarily suspension of the order of its children <gi>del</gi> and
+                                 <gi>add</gi>.</head>
+                        </figure>
+                        <figure xml:id="TAGML-grouped-rev">
+                           <graphic url="img/grouped-rev-tagml.png" width="410px" height="490px"/>
+                           <head type="legend">Representation of the TAGML hypergraph of the code
+                              example of the grouped revision. The Markup nodes <q>root</q> and
+                                 <q>del</q> are connected to the relevant Text nodes by means of a
+                              hyperedge. The visualisation clearly shows that there there are two
+                              paths through the text, which corresponds with our interpretation of a
+                              grouped revision. The Text nodes <q>so</q> and <q>certainly</q> are
+                              both on the same rank from the root Document node; the order of the
+                              text stream being temporarily suspended.</head>
+                        </figure></p>
+                  </div>
                </div>
                <div xml:id="discontinuity3">
                   <head>Discontinuity</head>
+                  <p>There are quite some mechanisms to express discontinuous structures in XML but
+                     all of them require quite extensive tagging as well as an application layer
+                     with information about how to interpret those tags. For example, using the
+                        <att>prev</att> and <att>next</att> mechanism, the <ref
+                        target="#discontinuity1" type="crossref">example</ref> of discontinuity
+                     would look as follows: <egXML xmlns="http://www.tei-c.org/ns/Examples"><root>
+                           <q xml:id="1" next="#2">"Dear Marion:</q> (wrote Ada.) <q xml:id="2"
+                              prev="#1"> We are all very glad..."</q>
+                        </root></egXML>. Similar to TexMECS, users can encode discontinuity in TAGML
+                     in a more compact way that does not require generating unique IDs for the
+                        <gi>q</gi> element. Instead, users can indicate that the <q>q</q> element is
+                     paused and subsequently resumed with the <q>-</q> and the <q>+</q> signs:
+                        <eg>&#91;root&#62; &#91;q&#62;"Dear Marion&#60;-q&#93; (wrote Ada)
+                        &#91;+q&#62; We are all very glad...&#60;q&#93; &#60;root&#93;</eg>. The
+                     visualisations of the respective data models clearly show the difference: in
+                     the XML encoding, the sentence contains two separate <gi>q</gi> elements that
+                     are only connected on the application level; the TAGML encoding stresses that
+                     the text nodes tagged with the <q>q</q> markup element are part of one and the
+                     same quotation: <figure xml:id="XML-discontinuity">
+                        <graphic url="img/discont1-xml.png" width="310px" height="490px"/>
+                        <head type="legend">Representation of the XML tree of the discontinuity
+                           example, showing how the XML tree has two separate <gi>q</gi> elements.
+                           The <att>next</att> and <att>prev</att> attributes are represented as
+                           labels on the markup nodes. An XML processor would need to have access to
+                           additional information in the application layer before it knows that the
+                           contents of the <gi>q</gi> elements belong together semantically.</head>
+                     </figure>
+                     <figure xml:id="TAGML-discontinuity">
+                        <graphic url="img/discont1-tagml.png" width="410px" height="490px"/>
+                        <head type="legend">Representation of the TAGML hypergraph of the
+                           discontinuity example. The Markup node <q>q</q> is connected to the
+                           relevant Text nodes by means of a hyperedge. The visualisation clearly
+                           shows that there there is just one <q>q</q> element. This information is
+                           available at the level of the model and can be parsed and processed
+                           without additional information.</head>
+                     </figure></p>
                </div>
                <div xml:id="overlap3">
                   <head>Overlapping Textual Structures</head>
+                  <p>Last but not least: overlapping structures. As mentioned <ref type="crossref"
+                        target="#definition">above</ref>, the TAG model uses <term>layers</term> to
+                     group together a hierarchically structured set of markup elements. Layers can
+                     share both Text nodes and Markup nodes. Simply put, layers in TAGML ensure that
+                     one can structure a TAGML document without worrying about overlap. Consider a
+                     base transcription of text characters to which one or more layers of markup are
+                     added. The markup within each layer is hierarchically ordered, but together the
+                     layers represent differently structured information. For example: the markup in
+                     layer 1 expresses information about the document’s structure (page -> line)
+                     while the markup in layer 2 conveys the structure of the book (book -> chapter
+                     -> sentence). In theory, encoders can create as many layers as they want. We
+                     identify at least three purposes of layers: <list rend="ordered">
+                        <item>Technical: preventing (self)overlapping structures within a TAGML
+                           file</item>
+                        <item>Practical: generate different views from a TAGML file</item>
+                        <item>Collaborating: identifying different perspectives on the same source
+                           document</item>
+                     </list>. This section only discusses the first function in the context of
+                     encoding overlapping structures. In XML TEI P5, <ref target="#discontinuity2-1"
+                        type="crossref">the overlap example</ref> could be encoded using the
+                        <gi>delSpan</gi> mechanism: <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <root>
+                           <div type="page">
+                              <delSpan spanTo="#1"/>
+                              <p>
+                                 <s><!-- some text --></s>
+                              </p>
+                           </div>
+                           <div type="page">
+                              <p>
+                                 <s><!-- some text --></s>
+                              </p>
+                              <anchor xml:id="1"/>
+                           </div>
+                        </root>
+                     </egXML> In TAGML, we can combine the mechanism to encode discontinuity with
+                     the layer functionality. We will create two layers: <list rend="inline">
+                        <item>one layer for the documentary structure containing the pages and the
+                           sentences, with the layer identifier <q>D</q></item>
+                        <item>one for the textual structure with the deletion and the sentences,
+                           with the layer identifier <q>T</q></item>
+                     </list>. A simplification of the transcription would look as follows: <figure
+                        xml:id="example-tagml-layers">
+                        <eg>[root|+T,+D> [page|D> [del|T> [s|T,D> [! some text !] &lt;s] &lt;-del]
+                           &lt;page] [page|D> [+del|T> [s|T,D> [! some text !] &lt;s] &lt;del] &lt;page]
+                           &lt;root]</eg>
+                        <head type="legend">A simplified example of encoding discontinuous and
+                           overlapping structures in TAGML.</head>
+                     </figure>If we look once more at the visualisations of the underlying data
+                     structures, we clearly see that it is not possible to encode in XML that the
+                     deletion spans over multiple paragraphs and multiple <gi>div</gi> elements. The
+                     visualisation of the TAG hypergraph shows that the Text nodes are all contained
+                     by one <q>del</q> element (indicated with the green hyperedge labelled
+                        <q>del</q>). <figure xml:id="XML-overlap">
+                        <graphic url="img/discont2-xml.png" width="310px" height="490px"/>
+                        <head type="legend">Representation of the XML tree of the overlap example.
+                           To an XML processor is is not clear that the <gi>delSpan</gi> element is
+                           related to the <gi>p</gi> and the <gi>s</gi> elements.</head>
+                     </figure>
+                     <figure xml:id="TAGML-overlap">
+                        <graphic url="img/discont2-tagml.png" width="410px" height="490px"/>
+                        <head type="legend">Representation of the TAGML hypergraph of the overlap
+                           example. The Markup node <q>del</q> is connected to the relevant Text
+                           nodes by means of a hyperedge. The visualisation clearly shows that there
+                           there is just one <q>del</q> element, regardless of the overlap. This
+                           information is available at the level of the model and can be parsed and
+                           processed without additional information.
+                           <!-- TODO: update visualisatie met layer ID? Toevoegen van MCT visualisatie? Kan misschien te verwarrend worden... --></head>
+                     </figure></p>
                </div>
             </div>
             <div xml:id="conclusion">
                <head>Conclusion</head>
+               <p><!-- Something like: Following the truisms that encoding is modeling and that encoding implies
+                  communicating an interpretation, we aim to demonstrate how TAGML provides editors
+                  with more eloquence in expressing their interpretation of the variance as well as
+                  the creative process.TAG’s graph model required us to invent a new markup language
+                  with which you could tag those complex textual occurrences we mentioned above:
+                  different coexisting structures, discontinuous elements, etc. A markup language is
+                  more than just a syntax: it also requires a schema – to validate the syntax – and
+                  a query language to, well, query the documents. -->
+               </p>
             </div>
             <div xml:id="discussion">
                <head>Discussion</head>
