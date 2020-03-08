@@ -6,7 +6,8 @@
    <teiHeader>
       <fileDesc>
          <titleStmt>
-            <title type="main">Texts as Hypergraphs: an Intuitive Representation of the Nature of Text.</title>
+            <title type="main">Texts as Hypergraphs: an Intuitive Representation of the Nature of
+               Text.</title>
             <author>
                <name>
                   <forename>Elli</forename>
@@ -630,20 +631,42 @@
                      it may be good to emphasise here that syntax is not necessarily the same as a
                      data model. When the TAG data model was first presented in 2017, it did not
                      have its own syntax and could be serialised using LMNL or TexMECS notation. In
-                     2018 we developed the syntax TAGML. With TAGML, encoders can model textual
-                     information in the TAG hypergraph structure, and TAGML is designed to make that
-                     modeling process as natural as possible. <note>The open source text editor
-                        Sublime has <ref target="https://huygensing.github.io/tagml-sublime-syntax/"
-                           >TAGML syntax highlighting</ref> and the <ref
+                     2018 we developed the syntax TAGML that has some special notations for encoding
+                     complex textual features.<note>TAGML can be edited in any editor, but the open
+                        source text editor Sublime has <ref
+                           target="https://huygensing.github.io/tagml-sublime-syntax/">TAGML syntax
+                           highlighting</ref> and the <ref
                            target="https://huygensing.github.io/alexandria/">reference
                            implementation Alexandria</ref> can be used to parse and validate TAGML
-                        documents and store them as a TAG hypergraph.</note> The following three
-                     sections illustrate how the complex textual features highlighted in this
+                        documents and store them as a TAG hypergraph.</note> With TAGML, encoders
+                     can model textual information in the TAG hypergraph structure, and TAGML is
+                     designed to make that modeling process as natural as possible. The following
+                     three sections illustrate how the complex textual features highlighted in this
                      article can be expressed in TAGML. Since the TEI community is most familiar
                      with the properties of XML and the mono-hierarchical tree model, in the
                      following this paper will contrast the TAGML examples with XML. Each section
                      combines a syntactical representation with a visualisation of how the textual
                      information is stored the underlying datamodels.</p>
+                  <p>A TAGML document is a UTF-8 encoded text with embedded markup. Special
+                     characters are used to indicate the start and the end of a TAGML markup tag.
+                     For every open tag, there should be a corresponding closing tag. <figure
+                        xml:id="example_tagml_1">
+                        <eg>&#91;root&#62; &#91;p&#62; Some text here &#60;p&#93; &#60;root&#93; </eg>
+                        <head type="legend">A simple TAGML document.</head>
+                     </figure>The looks of TAGML may ressemble those of existing markup languages
+                     like XML, TexMECS or LMNL, but TAGML is in many ways more expressive. For
+                     instance, in XML all annotation values are plain text, but TAGML offers
+                     datatyping of annotations: users can make the date type of TAGML annotations
+                     explicit and thus distinguish between numbers, strings of characters, booleans,
+                     etc. Annotations can also be nested (annotations on annotations) or combine
+                     text and markup (<term>rich text</term>). For a full overview of TAGML’s
+                     features, we refer to <ref
+                        target="https://github.com/HuygensING/TAG/tree/master/TAGML">the
+                        website</ref> and to <ref target="#dekk2018" type="bibl">Haentjes Dekker et
+                        al. 2018</ref>. For the purposes of this contribution, it suffices to know
+                     that where the TAG model presents a more powerful and inclusive data model for
+                     text, TAGML offers encoders the chance to express their interpretation of that
+                     text in a more refined and explicit way. </p>
                </div>
             </div>
             <div xml:id="expressing-features">
