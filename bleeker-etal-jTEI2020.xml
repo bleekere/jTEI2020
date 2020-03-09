@@ -632,9 +632,10 @@
                      it may be good to emphasise here that syntax is not necessarily the same as a
                      data model. When the TAG data model was first presented in 2017, it did not
                      have its own syntax and could be serialised using LMNL or TexMECS notation. In
-                     2018 we developed the syntax TAGML that has some special notations for encoding
-                     complex textual features.<note>TAGML can be edited in any editor, but the open
-                        source text editor Sublime has <ref
+                     2018 we developed the syntax TAGML. The markup language was designed to have
+                     the same compactness of XML and to be independent of a user environment, and to
+                     supply special notations for encoding complex textual features.<note>TAGML can
+                        be edited in any editor, but the open source text editor Sublime has <ref
                            target="https://huygensing.github.io/tagml-sublime-syntax/">TAGML syntax
                            highlighting</ref> and the <ref
                            target="https://huygensing.github.io/alexandria/">reference
@@ -791,11 +792,11 @@
                            <graphic url="img/grouped-revision-xml.png" width="310px" height="490px"/>
                            <head type="legend">Representation of the XML tree of the code example of
                               the grouped revision. If the text nodes in this XML tree would be
-                              parsed, they would be considered ordered. Again, an XML processor
-                              needs to have access to additional information in the application
-                              layer before it knows that the <gi>subst</gi> tag indicates a
-                              momentarily suspension of the order of its children <gi>del</gi> and
-                                 <gi>add</gi>.</head>
+                              parsed, they would be considered ordered, because XML assumes an
+                              ordered hierarchy. Again, it would be up to the application layer to
+                              convey the additional information that the <gi>subst</gi> tag
+                              indicates a momentarily suspension of the order of its children
+                                 <gi>del</gi> and <gi>add</gi>.</head>
                         </figure>
                         <figure xml:id="TAGML-grouped-rev">
                            <graphic url="img/grouped-rev-tagml.png" width="410px" height="490px"/>
@@ -924,51 +925,98 @@
             </div>
             <div xml:id="conclusion">
                <head>Conclusion</head>
-               <p> One of the holy grails of computer science, according to professor computer
-                  science Teresa Nakra, is to algorithmically express the natural world (quoted in
-                     <ref type="bibl" target="#david2006">Davidson 2006</ref>). The natural world is
-                  ambiguous, complex, and open to many co-existing interpretations. A computer
-                  model, on the contrary, demands clear and explicitly encoded information. Still,
-                  over three decades of developing various data models for text encoding have
-                  brought us a long way towards that holy grail and we are still on the move. The
-                  fields of text encoding, markup, and document modeling continue to thrive; despite
-                  its current implementation of XML, the TEI community maintains an openness and
-                  curiosity toward alternative data models
-                  (<!-- add refs to Ciotti and Pierazzo -->. Past initiatives like LMNL, TexMECS and
-                  EARMARK have demonstrated how closely technical developments and philosophical
-                  reflections interact: data models influence our conceptualisation of text – and
-                  vice versa. <!-- tot hier --> Contribution of this paper: more than a tool
-                  presentation, also reflections on ongoing research into text modeling and markup <!-- quote Wendell -->
-                  <quote source="#quoteref7">we encode texts and represent them digitally in order to
-                     present, examine, study, and reflect on the rich heritage of knowledge and
-                     expression presented to us in our cultural legacy</quote>(<ref xml:id="quoteref7" target="#piez2014" type="bibl">Piez 2014</ref>).
-                  <!-- summary --> The paper aimed to demonstrate that the TAG data model and the
-                  corresponding TAGML syntax provides editors with more eloquence in expressing
-                  their interpretation of a text. We argue that the functionalities of TAG
-                  consequentially influence how we model, think about, process and analyse text. TAG
-                  offers text encoders and editors a powerful tool that allows for the encoding of <list>
-                     <item>multiple co-existing (and potentially overlapping) views on a text</item>
-                     <item>nonlinear or discontinuous structures</item>
-                     <item>different data types</item>
-                  </list>. Furthermore, the software package of TAG is open source and designed to
-                  be implemented in existing editorial workflows. <!-- limitations of paper --> We
-                  used examples from textual genetic studies, since scholars working in that field
-                  are regularly confronted with the need to model complex textual features. Still,
-                  it is easy to imagine how TAG and TAGML can be implemented in other fields and for
-                  other research objectives: any textual scholar will be familiar with discontinuous
-                  and overlapping structures, modeling nonlinear information, or adding multiple
-                  layers of markup over the same text. The scope of the paper was necessarily
-                  limited in that it only looked at four simple examples, while cultural heritage
-                  text often present much more complicated cases, such as additions in additions or
-                  open variants. Readers are referred to the TAGML documentation and encouraged to
-                  experiment with TAG and TAGML themselves. In spite of this limitation, the paper
-                  adds to our understanding of data models for text. <!-- future work --> Further
-                  development of the TAG model concentrates on (1) validation and (2) querying. Open
-                  variants in TAGML and the need to address markup elements Export functionality:
-                  implementing TAG in an existing (XML/TEI-based) workflow
-                  <!-- A markup language is
-                  more than just a syntax: it also requires a schema – to validate the syntax – and
-                  a query language to, well, query the documents. --></p>
+               <div xml:id="recap">
+                  <head>Recap</head>
+                  <p>The goals of this paper were two-fold. On the one hand, we aimed to demonstrate
+                     how the TAG data model and the corresponding TAGML syntax can provide scholars
+                     with more eloquence in expressing their interpretation of a text. TAG is
+                     designed to offer text encoders and editors a powerful tool that allows for the
+                     encoding of <list>
+                        <item>multiple co-existing (and potentially overlapping) views on a
+                           text</item>
+                        <item>nonlinear or discontinuous structures</item>
+                        <item>different data types</item>
+                     </list>. We used examples from textual genetic studies, since scholars working
+                     in that field are regularly confronted with the need to model complex textual
+                     features. Still, it is easy to imagine how TAG and TAGML can be implemented in
+                     other fields and for other research objectives: any textual scholar will be
+                     familiar with discontinuous and overlapping structures, modeling nonlinear
+                     information, or adding multiple layers of markup over the same text. On the
+                     other hand, we used the presentation of the TAG model as an occasion to examine
+                     our fundamental assumptions about text and how data models act on these
+                     assumptions. TAG is based on the assumption that <term>text</term> is a
+                     nonlinear, multilayered object containing information that is at times ordered,
+                     unordered or partially ordered. The aim is to process and parse this complex
+                     mixture of information with using little to no workarounds. This is tackled,
+                     among others, by delegating more responsibility to the syntax and less to the
+                     application layer(s).</p>
+               </div>
+
+               <div xml:id="future-work">
+                  <head>Future Work</head>
+                  <p>The scope of the paper was necessarily limited in that it only provided four
+                     simplified examples of textual features, while cultural heritage text often
+                     present much more complicated cases, such as additions in additions or open
+                     variants. Readers are referred to the TAGML documentation and encouraged to
+                     experiment with TAG and TAGML in order to explore TAG’s modeling potential.
+                     When doing so, they are asked to keep in mind that the development of TAG is
+                     ongoing. In addition to a syntax and a data model, the design of a new markup
+                     language includes a schema (for validation) and a query language. An editor
+                     that provides autocomplete is no luxary either, nor is a workflow with version
+                     management of TAGML files. Current work concentrates on further development of
+                     the TAGML parser in view of validation and autocomplete. As pointed out
+                     elsewhere (<ref type="bibl" target="#dekk2018">Haentjens Dekker et al. 2018,
+                        footnote 12</ref>), we are also aware that designing a markup language
+                     involves a number of challenging non-technical aspects, like training and
+                     teaching, unfamiliarity, and the (un)willingness of users to adopt new ways of
+                     editing. Indeed, we are mindful of the fact that current text encoding
+                     practices revolve largely around XML. However, despite XML’s current
+                     prevalence, we see much value in maintaining an openness and curiosity toward
+                     alternative syntaxes for text encoding and what those may mean for solving
+                     long-standing challenges of data representation.<note>This view has been
+                        communicated before, amongst others by Elena Pierazzo in her capacity as
+                        chair of the TEI board (cited in <ref target="#ciot2018" type="bibl">Ciotti
+                           2018</ref>)</note> Furthermore, it is worth emphasising that TAG can also
+                     be implemented in existing editorial workflows, even if these are XML-based.
+                     The reference implementation Alexandria offers an export function that includes
+                     an XML format.<note>When exported to XML, overlapping structures in the TAGML
+                        document are rendered as milestones using Trojan Horse
+                        markup.<!-- TODO: expand: what happens with other features --></note> A
+                     TAGML-to-XML export does require users to reflect on how they would like to see
+                     complex textual features rendered in XML. In view of our argument for more
+                     awareness of data models for text, we do not consider this moment of reflection
+                     as a major disadvantage.</p>
+               </div>
+               <div xml:id="reflections">
+                  <head>Reflections</head>
+                  <p> One of the holy grails of computer science, according to professor computer
+                     science Teresa Nakra, is to algorithmically express the natural world (quoted
+                     in <ref type="bibl" target="#david2006">Davidson 2006</ref>). One of the
+                     obstacles is that the natural world is ambiguous, complex, and open to many
+                     co-existing interpretations. A computer model, on the contrary, demands clear
+                     and explicitly encoded information. As a consequence, the process of text
+                     encoding is a constant negotiation with the affordances of a data model. A data
+                     model’s technological limitations can be stretched with workarounds, but that
+                     may result in less interchangeability, accessability, and reuseability of the
+                     encoded files. What is more, past initiatives like LMNL, TexMECS and EARMARK
+                     have already demonstrated that the technical aspects of data models are tightly
+                     intertwined with our conceptual models of text. It is therefore crucial that
+                     we, as text encoding community, continue to map the various text encoding
+                     methodologies in order to explore how the limitations of underlying data
+                     model(s) influence scholars’ editing methods as well as their understanding of
+                     texts. Ideally, there is little to no gap between a scholar’s interpretation of
+                     a text and how a computer’s understands it. And if there is, the scholar should
+                     at least be aware of it. Accordingly, this contribution used the presentation
+                     of the TAG data model to offer a higher level perspective on text modeling. We
+                     identified a number of textual features – nonlinearity, discontinuity, and
+                     overlapping structures – that cannot be idiomatically expressed in the
+                     prevailing data models for text. Subsequently we demonstrated how modeling our
+                     interpretation of these messy, complex features can be communicated to the
+                     computer by modeling them as a hypergraph. Hence, while the TAG data model
+                     itself is still under active development, we believe that our findings so far
+                     may be of use to the broader text encoding community as it will help to
+                     establish a paradigm for a productive discussion on text modeling.</p>
+               </div>
             </div>
 
          </div>
@@ -978,6 +1026,11 @@
          <div type="bibliography">
 
             <listBibl>
+
+               <bibl xml:id="ciot2018"><author>Ciotti, Fabio</author>. <date>2018</date>. <title
+                     level="a">A Formal Ontology for the Text Encoding Initiative</title>. <title
+                     level="m">Umanistica Digitale</title>. <biblScope unit="volume">2</biblScope>.
+                     DOI:<idno>10.6092/issn.2532-8816/8174</idno></bibl>
 
                <bibl xml:id="pier2015"><author>Pierazzo, Elena</author>. <date>2015</date>.
                      <title>Digital Scholarly Editing: Theories, Models and Methods.</title>
@@ -992,6 +1045,7 @@
                      Review</title>, <biblScope unit="volume">2</biblScope>, <ref
                      target="https://newleftreview.org/II/1/franco-moretti-conjectures-on-world-literature "
                      >online </ref>available.</bibl>
+
                <bibl xml:id="piez2002"><author>Piez, Wendell</author> and <author>Jenni
                      Tennison</author>. <date>2002></date>. <title level="a">The Layered Markup and
                      Annotation Language (LMNL)</title>. <title level="m">Proceedings of Extreem
@@ -1029,9 +1083,7 @@
                <bibl xml:id="renear1993"><author>Renear, Allen</author>, Renear, <author>Elli
                      Mylonas</author>, and <author>David Durand</author>. <date>1993</date>.
                      <title>Refining our Notion of What Text Really Is: The Problem of Overlapping
-                     Hierarchies</title>. Available <ref
-                     target="https://www.ideals.illinois.edu/bitstream/handle/2142/9407/RefiningOurNotion.pdf"
-                     >online</ref>.</bibl>
+                     Hierarchies</title>. Available online.</bibl>
 
                <bibl xml:id="dekk2017"><author>Haentjens Dekker, Ronald</author> and <author>David
                      J. Birnbaum</author>. <date>2017</date>. <title level="a">It’s More Than Just
