@@ -104,60 +104,68 @@
                Still, there often are significant gaps between how a scholar conceptually thinks
                about text, how this translates to an encoding model, and how a computer understands
                the encoded text. Put differently: how an encoding looks to a human reader often
-               differs from the way that information is stored on a computer.</p>
+               differs from how the information is stored on a computer.</p>
             <p>A clear example of this lack of congruence is seen with what we call <term
                   xml:id="nonlinear">non-linear text</term>, a textual phenomenon often present on
                historical or literary documents in the form of deletions and additions. We consider
                text to be non-linear when there is more than one order in which words or characters
                may be placed without influencing the semantics of the text. A straightforward
-               example is the sentence <eg>This is a <hi rend="strike-out">first</hi>
-                  <hi rend="addition">second</hi> attempt.</eg> From the perspective of a human
+               example is the sentence <!-- TODO: add figure --> From the perspective of a human
                reader, the deleted and the added word represent two readings of the character
                sequence. The deleted and the added word are located at the same position in the text
                sequence and they are mutually exclusive: reading from left to right, the sentence
                either says <eg>this is a first attempt</eg> or <eg>this is a second attempt</eg>. We
-               say that the text characters are <term>fully ordered</term> until the point where the
-               variation occurs (at the crossed-out word <q>first</q>). At this point, the text
-               characters are <term>unordered</term>. The two reading paths converge again after the
+               can say that the text characters are <term>fully ordered</term> until the point where
+               the variation occurs (at the crossed-out word <q>first</q>). At this point, the text
+               characters are <term>unordered</term>: The two reading paths converge again after the
                variation ends, so the text characters are again fully ordered after the addition. We
-               therefore also call non-linear text <term>partially ordered text</term>.</p>
-            <p>From an informational perspective, however, the partially-orderedness as perceived by
-               a human reader is not represented as such in the underlying data model. In TEI XML,
-               partially ordered text may be encoded like this: <egXML
-                  xmlns="http://www.tei-c.org/ns/Examples"><s>This is a
-                        <del>first</del><add>second</add> attempt.</s></egXML> As human readers, we
-               assume that if the <gi>del</gi> and <gi>add</gi> elements were to be placed in a
-               different order, they would not have the same meaning (see <ref type="bibl"
-                  target="#dekk2017">Haentjens Dekker and Birnbaum</ref>and <ref type="bibl"
-                  target="#dekk2018">Haentjens Dekker et al.</ref>). However, in XML, all text and
-               markup are typically ordered.<note>Only XML attributes and XML attribute values are
-                  unordered.</note> In order for an XML processor to understand that the markup
+               therefore also call non-linear text <term>partially ordered text</term>. How can we
+               translate this feature so that the computer understands it in the same way we human
+               readers do? In other words: how can we computationally express the mixture of linear
+               and nonlinear text?</p>
+            <p>It is not evident that the partial orderedness of the text as perceived by a human
+               reader can be represented as such in the underlying data model. Consider a standard
+               TEI XML encoding of the example given above: <egXML
+                  xmlns="http://www.tei-c.org/ns/Examples">
+                  <s>This is a <del>first</del><add>second</add> attempt.</s>
+               </egXML> As human readers, we assume that if the <gi>del</gi> and <gi>add</gi>
+               elements were to be placed in a different order, they would not have the same
+               meaning. Placing an addition before a deletion typically indicates that the encoder
+               thinks the text was first added, than deleted. However, in XML, all text and markup
+               are typically ordered.<note>Only XML attributes and XML attribute values are
+                  unordered.</note>In order for an XML processor to understand that the markup
                element <gi>subst</gi> expresses the start of partially ordered text, it needs to
                have access to an application layer like a schema that explains the semantic meaning
-               of the markup tag. The more responsibility is delegated to additional application
-               layers, the more complex the processing of the XML document becomes.<note>See also
-                     <ref type="bibl" xml:id="quoteref1" target="#sper2008">Sperberg-McQueen and
-                     Huitfeldt</ref>, who point out that any mechanisms defined by the TEI to
-                  express textual features like discontinuity are not understood or supported by
-                  generic XML tools; <quote source="#quoteref1">they require vocabulary-specific
-                     support by a different layer of code</quote>, and by <ref target="#per2009"
-                     type="bibl" xml:id="quoteref2">Peroni and Vitali</ref> who state that a TEI XML
-                  document with specific markup that requires to be <quote source="#quoteref2"
-                     >understood and exploited by a very specific and application-dependent
-                     tool</quote> defeats the purpose of switching to XML in the first place. This
-                  line of reasoning reflects the software development principle of Separation of
-                  Concerns, which sets out to decrease complexity, promote sustainable development,
-                  and facilitate the maintenance of code.</note> Ideally, therefore, one likes to
-               avoid depending on the application layer(s) for TEI XML documents to be processed in
-               accordance with a scholar’s expectations. That means information about non-linearity
-               and other alternative text structures or orderings should be part of the data model
-               and not the application layer(s). Once a data model is able to represent and store as
-               many properties of a text as possible, the application layer(s) do(es) not need to
-               supplement the model and can focus on actual application-level tasks instead (<ref
-                  type="bibl" target="#dekk2017">Haentjens Dekker and Birnnaum</ref>).</p>
-            <p>In the present contribution, we illustrate this line of reasoning argument with the
-                  <ref target="https://huygensing.github.io/TAG/">Text-As-Graph (TAG)</ref>
-               hypergraph data model and the associated syntax <ref
+               of the markup tag. Delegating too much responsibility to the application layer,
+               however, means that the processing of the XML document becomes an increasingly
+               complex undertaking (see <ref type="bibl" target="#dekk2017">Haentjens Dekker and
+                  Birnbaum</ref>and <ref type="bibl" target="#dekk2018">Haentjens Dekker et
+                  al.</ref>). <note>See also <ref type="bibl" xml:id="quoteref1" target="#sper2008"
+                     >Sperberg-McQueen and Huitfeldt</ref>, who point out that any mechanisms
+                  defined by the TEI to express textual features like discontinuity are not
+                  understood or supported by generic XML tools; <quote source="#quoteref1">they
+                     require vocabulary-specific support by a different layer of code</quote>, and
+                  by <ref target="#per2009" type="bibl" xml:id="quoteref2">Peroni and Vitali</ref>
+                  who state that a TEI XML document with specific markup that requires to be <quote
+                     source="#quoteref2">understood and exploited by a very specific and
+                     application-dependent tool</quote> defeats the purpose of switching to XML in
+                  the first place. This line of reasoning reflects the software development
+                  principle of Separation of Concerns, which sets out to decrease complexity,
+                  promote sustainable development, and facilitate the maintenance of
+               code.</note>Ideally, therefore, one likes to avoid depending on the application
+               layer(s) for TEI XML documents to be processed in accordance with a scholar’s
+               expectations. That means information about non-linearity and other alternative text
+               structures or orderings should be part of the data model and not the application
+               layer(s). Once a data model is able to represent and store as many properties of a
+               text as possible, the application layer(s) do(es) not need to supplement the model
+               and can focus on actual application-level tasks instead (<ref type="bibl"
+                  target="#dekk2017">Haentjens Dekker and Birnnaum</ref>). As a result, editors will
+               be able to be extremely precise in expressing their interpretation of a text which,
+               in turn, positively affects the subsequent processing and querying of the encoded
+               texts. </p>
+            <p>In the present contribution, we illustrate this line of reasoning with the <ref
+                  target="https://huygensing.github.io/TAG/">Text-As-Graph (TAG)</ref> hypergraph
+               data model and the associated syntax <ref
                   target="https://github.com/HuygensING/TAG/tree/master/TAGML">TAGML</ref>. Both TAG
                and TAGML are designed to express and store textual features in a way that
                corresponds more closely with the scholar’s understanding of it. TAG’s functional
@@ -927,29 +935,32 @@
                <head>Conclusion</head>
                <div xml:id="recap">
                   <head>Recap</head>
-                  <p>The goals of this paper were two-fold. On the one hand, we aimed to demonstrate
-                     how the TAG data model and the corresponding TAGML syntax can provide scholars
-                     with more eloquence in expressing their interpretation of a text. TAG is
-                     designed to offer text encoders and editors a powerful tool that allows for the
-                     encoding of <list>
-                        <item>multiple co-existing (and potentially overlapping) views on a
-                           text</item>
-                        <item>nonlinear or discontinuous structures</item>
-                        <item>different data types</item>
-                     </list>. We used examples from textual genetic studies, since scholars working
-                     in that field are regularly confronted with the need to model complex textual
-                     features. Still, it is easy to imagine how TAG and TAGML can be implemented in
-                     other fields and for other research objectives: any textual scholar will be
-                     familiar with discontinuous and overlapping structures, modeling nonlinear
-                     information, or adding multiple layers of markup over the same text. On the
-                     other hand, we used the presentation of the TAG model as an occasion to examine
-                     our fundamental assumptions about text and how data models act on these
-                     assumptions. TAG is based on the assumption that <term>text</term> is a
+                  <p>The goals of this paper were two-fold. First, we aimed to demonstrate how the
+                     TAG data model and the corresponding TAGML syntax can provide scholars with
+                     more eloquence in expressing their interpretation of a text. TAG is designed to
+                     offer text encoders and editors a powerful tool that (among other things)
+                     allows for the explicit encoding of <list>
+                        <item>multiple co-existing and potentially overlapping views on a
+                           text;</item>
+                        <item>nonlinear or discontinuous structures;</item>
+                        <item>different data types.</item>
+                     </list>The paper used examples from textual genetic studies, since scholars
+                     working in that field are regularly confronted with the need to model complex
+                     textual features. Still, it is easy to imagine how TAG and TAGML can be
+                     implemented in other fields and for other research objectives: any textual
+                     scholar will be familiar with discontinuous and overlapping structures,
+                     modeling nonlinear information, or adding multiple layers of markup over the
+                     same text. Secondly, we used the presentation of the TAG model as an occasion
+                     to examine our fundamental assumptions about text and how data models act on
+                     these assumptions. TAG is based on the assumption that <term>text</term> is a
                      nonlinear, multilayered object containing information that is at times ordered,
-                     unordered or partially ordered. The aim is to process and parse this complex
-                     mixture of information with using little to no workarounds. This is tackled,
-                     among others, by delegating more responsibility to the syntax and less to the
-                     application layer(s).</p>
+                     unordered or partially ordered. The aim of the TAG project is to process and
+                     parse this complex mixture of information with using little to no workarounds.
+                     This is tackled, among others, by delegating more responsibility to the syntax
+                     and less to the application layer(s). In doing so, the paper showed that the
+                     question <mentioned>what text really is</mentioned> continues to be of
+                     relevance and that every scholar embarking on a (new) text encoding project
+                     should be able to provide both a conceptual and a computational answer.</p>
                </div>
 
                <div xml:id="future-work">
@@ -989,7 +1000,7 @@
                </div>
                <div xml:id="reflections">
                   <head>Reflections</head>
-                  <p> One of the holy grails of computer science, according to professor computer
+                  <p>One of the holy grails of computer science, according to professor computer
                      science Teresa Nakra, is to algorithmically express the natural world (quoted
                      in <ref type="bibl" target="#david2006">Davidson 2006</ref>). One of the
                      obstacles is that the natural world is ambiguous, complex, and open to many
