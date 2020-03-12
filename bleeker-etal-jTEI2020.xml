@@ -259,40 +259,45 @@
                         2013</ref>); the <ref target="https://www.beckettarchive.org/ads/Ads.htm"
                         >electronic edition</ref> of Willem Elsschot’s <title>Achter de
                         Schermen</title> (edited by <ref target="#elsschot2007" type="bibl">Peter de
-                        Bruijn et al, 2007</ref>); and the <ref
+                        Bruijn et al., 2007</ref>); and the <ref
                         target="https://rotunda.upress.virginia.edu/melville/">Fluid Text
                         edition</ref> of Herman Melville’s <title>Typee</title> (edited by <ref
-                        type="bibl" target="#bryant2006">John Bryant, 2006</ref>). All links were
+                        type="bibl" target="#bryant2006">John Bryant, see</ref>). All links were
                      last accessed on <date when="2020-02-25">February 25, 2020</date> in a Mozilla
                      Firefox browser.</note></p>
                <p>In order to adequately represent and study a text’s genesis, editors typically (1)
                   express textual variation within one text; (2) compare textual variation across
                   documents; i.e., textual collation and (3) map the relationships between texts and
-                  documents related to the genesis of a text;.<note>It’s not within the scope of
-                     this article to survey describe this workflow in more detail, or to survey the
+                  documents related to the genesis of a text.<note>It’s not within the scope of this
+                     article to survey describe this workflow in more detail, or to survey the
                      digital tools that support the activities within this scholarly
                      workflow.</note>In order to support either of these activities, a tool needs to
                   recognise the kind of information that is relevant for textual genesis and –
                   ideally – also ensure that this information is retained throughout the processing.
-                  For example: if a tool ignores or discards the information about an author’s
-                  revision process because it isn’t able to recognise the way this information is
-                  encoded, it will have serious consequences for the analysis of the text’s genesis.
-                  Incidentally, although we use examples from textual genetic studies throughout
-                  this article, it may be noted that this principle applies to a wide variety of
-                  text encoding and text processing.</p>
+                  For example: if a collation tool ignores or discards the information about an
+                  author’s revision process because it isn’t able to recognise the way this
+                  information is encoded, it will have consequences for the analysis of the text’s
+                  genesis. Incidentally, this principle applies to a wide variety of text encoding
+                  and text processing and is not limited to the research questions that arise from
+                  textual genetic studies. </p>
             </div>
          </div>
          <div xml:id="features">
             <head>Complex Textual Features</head>
-            <p>Occurrences of non-linear text structures are many and various and can get very
-               complex very fast. For reasons of clarity and brevity, the following paragraphs
-               discuss three simple examples of complex textual structures. Unless indicated
-               otherwise, the examples come from the authorial holograph of <title>To the
-                  Lighthouse</title> by <ref type="bibl" target="#woolf1927">Virginia
-                  Woolf</ref>.<note>The authors are grateful to and acknowledge the Society of
-                  Authors as the Literary Representative of the Estate of Virginia Woolf. The Woolf
-                  material may not be used for commercial purposes. Please credit the copyright
-                  holder when reusing her work.</note></p>
+            <p>Occurrences of complex text structures are many and various and can get very
+               intricate very fast, especially when looking at modern manuscripts. Think of added
+               phrases in which words are crossed out and other words are added again,
+               transpositions of (parts of text), several layers of marginalia, etc. For reasons of
+               clarity and brevity, the following paragraphs discuss three simple examples of
+               complex textual structures. We return to these examples again in <ref type="crossref"
+                  target="#related-work">section 4</ref> and <ref target="#expressing-features"
+                  type="crossref">section 5</ref>. Unless indicated otherwise, all examples in the
+               text come from the authorial holograph of <title>To the Lighthouse</title> by
+               Virginia Woolf taken from the digital edition <ref type="bibl" target="#woolf1927"
+                  >Woolf Online</ref>. <note>The authors are grateful to and acknowledge the Society
+                  of Authors as the Literary Representative of the Estate of Virginia Woolf. The
+                  Woolf material may not be used for commercial purposes. Please credit the
+                  copyright holder when reusing her work.</note></p>
             <div xml:id="nonlinearity">
                <head>Non-linearity</head>
                <p>As mentioned <ref target="#nonlinear">above</ref>, we understand non-linear text
@@ -300,14 +305,14 @@
                   splits into two or more branches, for instance at the point where variation in the
                   text occurs that join together again at the end of the variation. The encoder can
                   use markup in order to mark the location of the <term>branching</term> of the
-                  text. The three figures below focus on cases of non-linearity in text:</p>
+                  text. The three figures below show different cases of non-linearity in text:</p>
                <div xml:id="deletion">
                   <head>Single Deletion or Addition</head>
-                  <p>In this example, the words <q>impossible barriers</q> are striked through by
-                     the author. This means that there are two variant states of the text, one
-                     including the deletion (<q>difference of opinion, impossible barriers,
-                        prejudices</q>) and one excluding it (<q>difference of opinion,
-                        prejudices</q>).<figure xml:id="single_deletion">
+                  <p>In this example, the words <q>impossible barriers</q> are struck through by the
+                     author. This means that there are two variant states of the text, one including
+                     the deletion (<q>difference of opinion, impossible barriers, prejudices</q>)
+                     and one excluding it (<q>difference of opinion, prejudices</q>).<figure
+                        xml:id="single_deletion">
                         <graphic url="img/single_deletion.png" width="620px" height="980px"/>
                         <head type="legend">A single deletion. Fol. 27; SD p. 13.</head>
                      </figure></p>
@@ -357,9 +362,38 @@
                         <quote source="#quoteref3">a number of alternative encodings for the same
                         point in a text</quote> (<ref type="bibl" xml:id="quoteref3"
                         target="#TEI2019">TEI P5, chapter 3.4</ref>. Conceptually, the order in
-                     which the children of the <gi>choice</gi> element are placed have no influence
-                     on the semantic meaning. <!-- TODO: voorbeeld toevoegen van orig/reg; abbr/expand; sic/corr-->
-                     <!-- TO DO: nog eens benadrukken dat de opvatting van partially orderedness slechts conceptueel is  --></p>
+                     which the children of a <gi>choice</gi> element are placed have no influence on
+                     the semantic meaning. In some way, this conceptual idea of partial orderedness
+                     is reflected in the encoding mechanisms offered by the TEI Guidelines. Consider
+                     for instance the following case, taken from the TEI Guidelines, <ref
+                        target="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-app.html"
+                        >chapter 12.1.1.</ref>: <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                        <app>
+                           <lem wit="#El #Hg">Experience</lem>
+                           <rdg wit="#La" type="substantive">Experiment</rdg>
+                           <rdg wit="#Ra2" type="substantive">Eryment</rdg>
+                        </app>
+                     </egXML> The <gi>rdg</gi> elements and the <gi>lem</gi> element offer
+                     alternative readings for the same part of the text, and encoders do not
+                     consider the order in which the <gi>rdg</gi> elements are placed within the
+                        <gi>app</gi> as informational. The same applies to the children of the
+                        <gi>choice</gi> in this example: <egXML
+                        xmlns="http://www.tei-c.org/ns/Examples">… marginal comments which indicate
+                        that the <choice>
+                           <corr>dates</corr>
+                           <sic>date's</sic>
+                        </choice> mentioned in the main body of the text are incorrect.</egXML>The
+                     TEI Guidelines emphasise that <quote source="#quoteref7">the <gi>sic</gi> and
+                           <gi>corr</gi> elements can appear in either order</quote> (TEI
+                     Guidelines, chapter <ref target="#TEI2019" xml:id="quoteref7" type="bibl"
+                        >3.4.1</ref>). </p>
+                  <p>The partial orderedness of the text and markup as understood by a human reader
+                     is reflected in the encoding model, but it is important to realise that the
+                     information is <emph>not</emph> stored as partially ordered in the underlying
+                     data model of XML, which still assumes the children of <gi>subst</gi>,
+                        <gi>app</gi> and <gi>choice</gi> to be ordered. In short, these examples
+                     illustrate the ubiquity of the aforementioned discrepancy between the
+                     conceputal model, the encoding model, and the data model. </p>
                </div>
             </div>
             <div xml:id="discontinuity">
@@ -473,14 +507,17 @@
                   target="#huit2012">Huitfeldt et al. 2010</ref>), and the tables created by Fabio
                Vitali (<ref type="bibl" target="#vitali2016">2016</ref>). In addition, we propose an
                overview of the existing data structures for modeling complex textual features in the
-               figure below
-               <!-- NOTE: afbeelding(en) van tabellen toevoegen na doorlopen van features-->. This
-               overview is based on the principle outlined above: any data model can theoretically
-               express any kind of text feature if it is complemented with workarounds or bespoke
-               coding, but this is not what we should aim for. Accordingly, <q>yes</q> means the
-               feature is natively supported in the datamodel. If a feature is only supported with
-               the help of a hack, a work-around or in the application layer, it is taken as a
-                  <q>no</q>.</p>
+                  <ref type="crossref" target="#overview-ml">figure</ref> below: <figure
+                  xml:id="overview-ml">
+                  <graphic url="img/overview-ml.png" width="310px" height="490px"/>
+                  <head type="legend">Overview of complex textual features supported by markup
+                     languages.</head>
+               </figure>This overview is based on the principle outlined above: any data model can
+               theoretically express any kind of text feature if it is complemented with workarounds
+               or bespoke coding, but this is not what we should aim for. Accordingly, <q>yes</q>
+               means the feature is natively supported in the datamodel. If a feature is only
+               supported with the help of a hack, a work-around or in the application layer, it is
+               taken as a <q>no</q>.</p>
             <div xml:id="non-linearity2">
                <head>Non-linearity</head>
                <p>The markup language TexMECS is designed as a linear representation for non-linear
@@ -505,8 +542,13 @@
                   ordered information, the EARMARK specification as described in (<ref type="bibl"
                      target="#per2009">Peroni and Vitali 2009</ref>) doesn’t natively support it. It
                   is also important to note that EARMARK is a metamarkup language, which means that
-                  users do not encode their texts in EARMARK but in an RDF serialisation.
-                  <!-- TODO: toevoegen referentie naar Gioele 2012 --></p>
+                  users do not encode their texts in EARMARK but in an RDF
+                     serialisation.<note>Recognising the challenge of expressing literary texts as
+                     RDF statements, <ref target="#bara2012" type="bibl" xml:id="quoteref8"
+                        >Barabucci et al.</ref> developed the FRETTA approach, which is designed
+                        <quote source="#quoteref8">to express EARMARK annotations in an embedded
+                        syntax such as XML</quote>. However, it is unclear whether this approach has
+                     been further developed and implemented.</note></p>
             </div>
             <div xml:id="discontinuity2">
                <head>Discontinuity</head>
@@ -555,8 +597,22 @@
                   that allow structures to overlap are the layered markup and annotation language
                   LMNL of Wendell Piez and Jenni Tennison (<ref type="bibl" target="#piez2002"
                      >2002</ref>), which permits ranges of markup annotations on a text stream to
-                  overlap.
-                  <!-- TO DO: mention the stand-off approach of the MVD cf. PhD thesis --></p>
+                  overlap. Finally, there exist several stand-off approaches to dealing with
+                  overlapping structures. The <ref type="bibl" target="#schmidt">Multi-Version
+                     Document (MVD)</ref> approach, designed by Desmond Schmidt, first separates
+                  markup from the text content and, second, breaks down the text content into
+                  fragments or ranges (called <term>standoff properties</term>). These fragments are
+                  linked to the (set of) witness(es) in which they occur and stored in an MVD. The
+                  structure of an MVD is thus similar to that of a variant graph: it is a collection
+                  of nodes and edges in which common fragments of text are merged together and only
+                  the variant text is made explicit. All text in common between witnesses is
+                  recorded only once, and all the differences are stored as separate files. The MVD
+                  approach circumvents the challenge of dealing with overlapping hierarchies within
+                  one text by separating the multiple layers of revision in a draft manuscript and
+                  treating them as individual witnesses. Another recent stand-off approach is seen
+                  in <ref target="#neill2019" type="bibl">The Codex project</ref> created by Iian
+                  Neill, who is inspired by Schmidt’s work and combines plain text and stand-off
+                  properties stored in a Neo4J database.</p>
             </div>
          </div>
          <div xml:id="tag">
@@ -665,18 +721,12 @@
                         highlighting</ref> and the <ref
                         target="https://huygensing.github.io/alexandria/">reference implementation
                         Alexandria</ref> can be used to parse and validate TAGML documents and store
-                     them as a TAG hypergraph.</note>The following three sections illustrate how the
-                  complex textual features described in <ref target="#features" type="crossref"
-                     >section 2.2</ref> can be expressed in TAGML. For reasons of brevity and
-                  because the TEI community is most familiar with the properties of XML and the
-                  mono-hierarchical tree model, we will contrast the TAGML examples with XML. Each
-                  example combines a syntactical representation of the textual feature with a
-                  visualisation of how the information is stored the underlying datamodels. While
-                  there are different mechanisms to encode the textual features in this section –
-                  TEI XML, TexMECS, LMNL – we assume that the TEI community is most familiar with
-                  the properties of XML and its mono-hierarchical tree model. Therefore, we will
-                  contrast the TAGML examples with XML examples. There’s at least three important
-                  points on which TAGML diverges from XML:<list rend="ordered">
+                     them as a TAG hypergraph.</note>While there are different mechanisms to encode
+                  the textual features in this section – TEI XML, TexMECS, LMNL – we assume that the
+                  TEI community is most familiar with the properties of XML and its
+                  mono-hierarchical tree model. Therefore, we will contrast the TAGML examples with
+                  XML examples. There’s at least three important points on which TAGML diverges from
+                     XML:<list rend="ordered">
                      <item>it has asymmetrical tags: <eg>[markup&gt; some text
                         &lt;markup]</eg></item>
                      <item>you can use it to express not just strings and markup, but other data
@@ -685,17 +735,17 @@
                            &lt;poem]</eg></item>
                      <item>you can nest annotations: <eg>[origin location={position={x=1 y=2}
                            country=&#39;nl&#39;}&gt; Amsterdam &lt;origin]</eg></item>
-                  </list>
-                  <!-- TODO: paragraaf nalezen en opschonen --></p>
+                  </list></p>
             </div>
          </div>
          <div xml:id="expressing-features">
             <head>Expressing Complex Textual Features in TAGML</head>
-            <p> Each of the three sections below section combines a syntactical representation (TEI
-               XML and TAGML) with a visualisation of how the textual information is stored the
-               underlying datamodels (a tree and a hypergraph).
-               <!-- TODO zin als "for reasons of clarity we give simple examples, but note that all these features can also be used in combination; " -->
-               For reasons of clarity and readability, the markup examples are simplified.</p>
+            <p>We now return to the complex textual features described in <ref target="#features"
+                  type="crossref">section 3</ref> for one last time. The three sections below
+               present a syntactical representation (TEI XML and TAGML) of these features together
+               with a visualisation of how the encoded information is stored the underlying
+               datamodels (respectively a tree and a hypergraph for text). In view of the
+               readability, the markup fragments are simplified.</p>
             <div xml:id="nonlinearity3">
                <head>Non-linearity</head>
                <div xml:id="deletion2">
@@ -786,31 +836,33 @@
                               <del>so</del>
                               <add>certainly</add>
                            </subst> disagreeable ...</root>
-                     </egXML>. In TAGML notation: <eg>[root&gt; ... for being
-                        &lt;|[del&gt;so&lt;del] | [add&gt;certainly&lt;add] |&gt; disagreeable...
-                        &lt;root]</eg>. On the level of the data model, though, there are
-                     significant differences. <figure xml:id="XML-grouped-rev">
+                     </egXML>In TAGML notation: <eg>[root&gt; ... for being &lt;|[del&gt;so&lt;del]
+                        | [add&gt;certainly&lt;add] |&gt; disagreeable... &lt;root]</eg>. At first
+                     sight, there’s little difference between the two serialisations. On the level
+                     of the data model, though, there are significant differences. <figure
+                        xml:id="XML-grouped-rev">
                         <graphic url="img/grouped-revision-xml.png" width="310px" height="490px"/>
                         <head type="legend">Representation of the XML tree of the code example of
-                           the grouped revision. If the text nodes in this XML tree would be parsed,
-                           they would be considered ordered, because XML assumes an ordered
-                           hierarchy. Again, it would be up to the application layer to convey the
-                           additional information that the <gi>subst</gi> tag indicates a
-                           momentarily suspension of the order of its children <gi>del</gi> and
-                              <gi>add</gi>.</head>
+                           the grouped revision.</head>
                      </figure><figure xml:id="TAGML-grouped-rev">
                         <graphic url="img/grouped-rev-tagml.png" width="410px" height="490px"/>
                         <head type="legend">Representation of the TAGML hypergraph of the code
                            example of the grouped revision. The Markup nodes <q>root</q> and
                               <q>del</q> are connected to the relevant Text nodes by means of a
-                           hyperedge. The visualisation clearly shows that there there are two paths
-                           through the text, which corresponds with our interpretation of a grouped
-                           revision. The Text nodes <q>so</q> and <q>certainly</q> are both on the
-                           same rank from the root Document node; the order of the text stream being
-                           temporarily suspended.</head>
-                     </figure>
-                     <!-- TODO : voorbeeld toevoegen van hoe de XML en hoe de TAGML gequeried wordt: in XML volgen de text nodes getagged met del en add op elkaar; in TAGML niet-->
-                  </p>
+                           hyperedge. </head>
+                     </figure>As mentioned above, we truly see the consequences of working with a
+                     data model that allows you to idiomatically represent non-linear structures
+                     when querying the documents. If the text nodes in this XML example would be
+                     parsed, they would be taken as fully ordered and the word <q>certainly</q>
+                     would be considered to follow after the word <q>so</q>. As a consequence, the
+                     reading <q>for being so disagreeable</q> will not exist, nor will the reading
+                        <q>for being certainly disagreeable</q>. The TAGML hypergraph visualisation
+                     clearly shows that these two readings of the text coexist. The Text nodes
+                        <q>so</q> and <q>certainly</q> are both on the same rank from the root
+                     Document node; the order of the text stream being temporarily suspended. This
+                     corresponds with our interpretation of a grouped revision and, importantly, it
+                     would turn up as such in query results.</p>
+                  <p> </p>
                </div>
             </div>
             <div xml:id="discontinuity3">
@@ -825,7 +877,7 @@
                         <q xml:id="1" next="#2">"Dear Marion:</q> (wrote Ada.) <q xml:id="2"
                            prev="#1"> We are all very glad..."</q>
                      </root>
-                  </egXML>. Similar to TexMECS, users can encode discontinuity in TAGML in a more
+                  </egXML>Similar to TexMECS, users can encode discontinuity in TAGML in a more
                   compact way that does not require generating unique IDs for the <gi>q</gi>
                   element. Instead, users can indicate that the <eg>q</eg> element is paused and
                   subsequently resumed with the <q>-</q> and the <q>+</q> signs: <eg>[root&gt;
@@ -834,8 +886,11 @@
                   the difference: in the XML encoding, the sentence contains two separate <gi>q</gi>
                   elements that are only connected on the application level; the TAGML encoding
                   stresses that the text nodes tagged with the <q>q</q> markup element are part of
-                  one and the same quotation.
-                     <!-- TODO: add something about querying the "q" --><figure
+                  one and the same quotation. The implications of this encoding become clear once
+                  more when we think about querying the XML and the TAGML documents. In XML, the
+                  search for the text from the letter sent to Marion would not return the quotation
+                  as one utterance, whereas in TAGML a search for the <eg>q</eg> element and its
+                  textual contents would.<figure
                      xml:id="XML-discontinuity">
                      <graphic url="img/discont1-xml.png" width="310px" height="490px"/>
                      <head type="legend">Representation of the XML tree of the discontinuity
@@ -913,8 +968,9 @@
                   visualisation of the TAG hypergraph shows that the Text nodes are all contained by
                   one <q>del</q> element (indicated with the green hyperedge labelled <q>del</q>).
                   This information is available at the level of the model and can be parsed and
-                  queried without additional information from the application level <!-- TODO: rephrase sentence, say something more about querying. -->
-                  <figure xml:id="XML-overlap">
+                  queried without additional information from the application level. Users can
+                  easily and without any workarounds search for deleted sentences, pages or
+                  paragraphs in the TAGML document.<figure xml:id="XML-overlap">
                      <graphic url="img/discont2-xml.png" width="310px" height="490px"/>
                      <head type="legend">Representation of the XML tree of the overlap example. To
                         an XML processor is is not clear that the <gi>delSpan</gi> element is
@@ -960,9 +1016,11 @@
                   application layer(s). In describing how our assumptions about text work on both
                   the TAG data model and the TAGML syntax, we set out to show that the matter of
                      <mentioned>what text really is</mentioned> continues to be of relevance for
-                  everyone involved in the fields of text encoding and text modeling. Indeed, every
-                  scholar embarking on a (new) text encoding project should be able to provide both
-                  a conceptual and a computational answer to this fundamental question.</p>
+                  everyone involved in the fields of text encoding and text modeling. Indeed, we
+                  suggest that every scholar embarking on a text encoding project addresses both the
+                  conceptual and the computational side of this fundamental question. The definition
+                  of text may vary; as long as scholars recognise how their conceptual definition
+                  affects the encoding model and the data model–and vice versa.</p>
             </div>
 
             <div xml:id="future-work">
@@ -983,32 +1041,33 @@
                   also aware that designing a markup language involves a number of challenging
                   non-technical aspects, like training and teaching, unfamiliarity, and the
                   (un)willingness of users to adopt new ways of editing. We are certainly mindful of
-                  the fact that current text encoding practices are largely based on XML. In that
-                  respect, it is worth emphasising that TAG can already be implemented in existing
-                  editorial workflows, even if these are XML-based. The reference implementation
-                  Alexandria offers an export function that includes an XML format.<note>When
-                     exported to XML, overlapping structures in the TAGML document are automatically
-                     rendered as milestones using Trojan Horse markup. The XML export of other
-                     complex textual features is under development. Automatising TAGML-to-XML export
-                     is challenging, not so much because of the technical aspects, but because it
-                     compels us to decide for future users how they would like to see a non-linear
-                     structure represented in XML: with <gi>choice</gi>, with <gi>subst</gi>, or
-                     with <gi>app</gi>?</note>A TAGML-to-XML export does require users to reflect on
-                  how they would like to see complex textual features rendered in XML, that is, what
-                  workarounds to implement.
-                  <!-- A markup language allows a text encoder to express a text as a certain data model. The XML tags, for example, represent an ordered tree while TexMECS tags will represent a GODDAG. When thinking about data models for text, it’s good to keep in mind that a a syntax is not necessarily the same as a data model. A data model can theoretically be serialised in multiple ways. -->In
-                  view of our argument for more awareness of data models for text, we do not
-                  consider this moment of reflection as a major disadvantage. So, despite XML’s
-                  current prevalence for text encoding purposes, we see much value in maintaining an
-                  openness and curiosity toward alternative syntaxes for text encoding and what
-                  those may mean for solving long-standing challenges of text
-                     representation.<note>This view has been communicated before, amongst others by
-                     Elena Pierazzo in her capacity as chair of the TEI board (cited in <ref
-                        target="#ciot2018" type="bibl">Ciotti 2018</ref>)</note></p>
+                  the fact that current text encoding practices are largely based on XML.
+                  Nevertheless, we see much value in maintaining an openness and curiosity toward
+                  alternative syntaxes for text encoding and what those may mean for solving
+                  long-standing challenges of text representation.<note>This view has been
+                     communicated before, amongst others by Elena Pierazzo in her capacity as chair
+                     of the TEI board (cited in <ref target="#ciot2018" type="bibl">Ciotti
+                        2018</ref>)</note>In that respect, it is also worth emphasising that TAG can
+                  already be implemented in existing editorial workflows, even if these are
+                  XML-based. The reference implementation Alexandria offers an export function that
+                  includes an XML format.<note>When exported to XML, overlapping structures in the
+                     TAGML document are automatically rendered as milestones using Trojan Horse
+                     markup. The XML export of other complex textual features is under development.
+                     Automatising TAGML-to-XML export is challenging, not so much because of the
+                     technical aspects, but because it compels us to decide for future users how
+                     they would like to see a non-linear structure represented in XML: with
+                        <gi>choice</gi>, with <gi>subst</gi>, or with <gi>app</gi>?</note>When
+                  thinking about data models for text, it’s good to keep in mind that a a syntax is
+                  not necessarily the same as a data model. A data model can theoretically be
+                  serialised in multiple ways, but some serialisations are more expressive than
+                  others. A TAGML-to-XML export does require users to reflect on how they would like
+                  to see complex textual features rendered in XML, that is, what XML workarounds to
+                  implement in order to deal with overlapping or non-linear structures. In view of
+                  our argument for more awareness of data models for text, we do not consider this
+                  moment of reflection as a major disadvantage.</p>
             </div>
             <div xml:id="reflections">
                <head>Reflections</head>
-               <!-- The downside is that it’s computationally less efficient since the TAG model needs to create a significant amount of edges to store the different orders, while most data models simply assume that information is always ordered. It goes to show that developing a data model is an incessant process of balancing efficiency and expressivity. So far, we believe to have found a workable equilibrum that makes the TAG model a powerful and intuitive data model for text encoding -->
                <p>One of the holy grails of computer science, according to professor computer
                   science Teresa Nakra, is to algorithmically express the natural world (quoted in
                      <ref type="bibl" target="#david2006">Davidson 2006</ref>). Unfortunately, the
@@ -1076,11 +1135,24 @@
                      Annotation Language (LMNL)</title>. <title level="m">Proceedings of Extreem
                      Markup Languages</title>.</bibl>
 
+               <bibl xml:id="neill2019"><author>Neill, Iian</author>. <date>2019</date>. <title
+                     level="a">The Codex: an Atlas of Relations</title>. In <title level="m"
+                     >Zeitschrift für Digitale Geisteswissenschaften</title>, available online via
+                     <ref target="https://vfg-mz.academia.edu/IianNeill">Academia.edu</ref>.</bibl>
+
                <bibl xml:id="elsschot2007"><author>Elsschot, Willem</author>. <date>2007</date>.
                      <title>Achter de Schermen</title>, edited by <editor>De Bruijn, Peter</editor>,
                      <editor>Vincent Neyt</editor> and <editor>Dirk van
                      Hulle</editor>.<pubPlace>Antwerpen/Den Haag</pubPlace>: <publisher>CMG/Huygens
                      ING/KANTL</publisher>.</bibl>
+
+               <bibl xml:id="bara2012"><author>Barabucci, Gioele</author>, <author>Silvio
+                     Peroni</author>, <author>Francesco Poggi</author>, and <author>Fabio
+                     Vitali</author>. <date>2012</date>. <title level="a">Embedding semantic
+                     annotations within texts: the FRETTA approach</title>. In <title level="m"
+                     >Proceedings of the 2012 ACM Symposium on Applied Computing (SAC 2012)</title>.
+                     <pubPlace>New York, New York, US</pubPlace>: <publisher>ACM Press</publisher>.
+                     DOI:<idno>https://doi.org/10.1145/2245276.2245403</idno></bibl>
 
                <bibl xml:id="hil2005"><author>Hilbert, Mirco</author>, <author>Oliver
                      Schonefeld</author> and <author>Andreas Witt</author>. <date>2005</date>.
