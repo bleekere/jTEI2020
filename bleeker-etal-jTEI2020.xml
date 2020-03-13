@@ -13,12 +13,18 @@
                   <forename>Elli</forename>
                   <surname>Bleeker</surname>
                </name>
-               <name><forename>Ronald</forename><surname>Haentjens Dekker</surname></name>
-               <name><forename>Bram</forename><surname>Buitendijk</surname></name>
-               <affiliation>The authors are part of the R&amp;D group of the Humanities Cluster of
-                  the Royal Dutch Academy for Arts and Sciences.</affiliation>
+               <affiliation/>
                <email>elli.bleeker@gmail.com</email>
             </author>
+            <author>
+               <name><forename>Ronald</forename><surname>Haentjens
+               Dekker</surname></name><affiliation/><email/></author>
+            <author><name><forename>Bram</forename><surname>Buitendijk</surname></name>
+               <affiliation>The authors are part of the R&amp;D group of the Royal Dutch Academy for
+                  Arts and Sciences.</affiliation><email/>
+            </author>
+
+
          </titleStmt>
          <publicationStmt>
             <publisher>TEI Consortium</publisher>
@@ -956,7 +962,7 @@
                         the layer identifier <q>T</q></item>
                   </list>. A simplification of the TAGML transcription would look as follows:
                      <figure xml:id="example-tagml-layers">
-                        <graphic url="img/example-layers-tagml.png" width="2044px" height="480px"/>
+                     <graphic url="img/example-layers-tagml.png" width="2044px" height="480px"/>
                      <head type="legend">A simplified example of encoding discontinuous and
                         overlapping structures in TAGML. The layer identifiers D and T indicate to
                         which layer the markup nodes belong. The markup within one layer is
@@ -979,12 +985,12 @@
                   <figure xml:id="TAGML-overlap">
                      <graphic url="img/discont2-tagml.png" width="410px" height="490px"/>
                      <head type="legend">Representation of the TAGML hypergraph of the overlap
-                        example. By grouping the <q>page</q> and the <q>del</q> element in markup layer <q>D</q>, and the
-                        <q>p</q> element in markup layer <q>T</q>, we can model both discontinuity and overlap.
-                        The visualisation shows that there there is just one <q>del</q> element,
-                        regardless of the overlap. This information is available at the level of the
-                        model and can be parsed and queried without additional information from the
-                        application level. </head>
+                        example. By grouping the <q>page</q> and the <q>del</q> element in markup
+                        layer <q>D</q>, and the <q>p</q> element in markup layer <q>T</q>, we can
+                        model both discontinuity and overlap. The visualisation shows that there
+                        there is just one <q>del</q> element, regardless of the overlap. This
+                        information is available at the level of the model and can be parsed and
+                        queried without additional information from the application level. </head>
                   </figure></p>
             </div>
          </div>
@@ -1106,14 +1112,14 @@
                <bibl xml:id="brun2013"><author>Brüning, Gerrit</author>, <author>Katrin
                      Henzel</author>, and <author>Dietmar Pravida</author>. <date>2013</date>.
                      <title level="a">Multiple Encoding in Genetic Editions: The Case of
-                        <title>Faust</title></title>. <title level="m">Journal of the Text Encoding
+                        <title>Faust</title></title>. <title level="j">Journal of the Text Encoding
                      Initiative</title>
-                  <biblScope unit="volume">4</biblScope>,
+                  <biblScope unit="volume">4</biblScope>.
                      DOI:<idno>https://doi.org/10.4000/jtei.697</idno></bibl>
 
                <bibl xml:id="ciot2018"><author>Ciotti, Fabio</author>. <date>2018</date>. <title
                      level="a">A Formal Ontology for the Text Encoding Initiative</title>. <title
-                     level="m">Umanistica Digitale</title>. <biblScope unit="volume">2</biblScope>.
+                     level="j">Umanistica Digitale</title>. <biblScope unit="volume">2</biblScope>.
                      DOI:<idno>10.6092/issn.2532-8816/8174</idno></bibl>
 
                <bibl xml:id="pier2015"><author>Pierazzo, Elena</author>. <date>2015</date>.
@@ -1122,21 +1128,21 @@
 
                <bibl xml:id="david2006"><author>Davidson, Justin</author>. <date>2006</date>. <title
                      level="a">Measure for Measure: Exploring the Mysteries of Conducting</title>.
-                     <title level="m">The New Yorker</title>, pp. 60–69.</bibl>
+                     <title level="j">The New Yorker</title>, pp. 60–69.</bibl>
 
                <bibl xml:id="moret2000"><author>Moretti, Franco</author>. <date>2000</date>. <title
-                     level="a">Conjectures on World Literature</title>. <title level="m">New Left
+                     level="a">Conjectures on World Literature</title>. <title level="j">New Left
                      Review</title>, <biblScope unit="volume">2</biblScope>, <ref
                      target="https://newleftreview.org/II/1/franco-moretti-conjectures-on-world-literature "
                      >online </ref>available.</bibl>
 
                <bibl xml:id="piez2002"><author>Piez, Wendell</author> and <author>Jenni
                      Tennison</author>. <date>2002></date>. <title level="a">The Layered Markup and
-                     Annotation Language (LMNL)</title>. <title level="m">Proceedings of Extreem
+                     Annotation Language (LMNL)</title>. <title level="j">Proceedings of Extreem
                      Markup Languages</title>.</bibl>
 
                <bibl xml:id="neill2019"><author>Neill, Iian</author>. <date>2019</date>. <title
-                     level="a">The Codex: an Atlas of Relations</title>. In <title level="m"
+                     level="a">The Codex: an Atlas of Relations</title>. In <title level="j"
                      >Zeitschrift für Digitale Geisteswissenschaften</title>, available online via
                      <ref target="https://vfg-mz.academia.edu/IianNeill">Academia.edu</ref>.</bibl>
 
@@ -1149,14 +1155,14 @@
                <bibl xml:id="bara2012"><author>Barabucci, Gioele</author>, <author>Silvio
                      Peroni</author>, <author>Francesco Poggi</author>, and <author>Fabio
                      Vitali</author>. <date>2012</date>. <title level="a">Embedding semantic
-                     annotations within texts: the FRETTA approach</title>. In <title level="m"
+                     annotations within texts: the FRETTA approach</title>. In <title level="j"
                      >Proceedings of the 2012 ACM Symposium on Applied Computing (SAC 2012)</title>.
                      <pubPlace>New York, New York, US</pubPlace>: <publisher>ACM Press</publisher>.
                      DOI:<idno>https://doi.org/10.1145/2245276.2245403</idno></bibl>
 
                <bibl xml:id="hil2005"><author>Hilbert, Mirco</author>, <author>Oliver
                      Schonefeld</author> and <author>Andreas Witt</author>. <date>2005</date>.
-                     <title level="a">Making CONCUR work.</title><title level="m">Proceedings of
+                     <title level="a">Making CONCUR work.</title><title level="j">Proceedings of
                      Extreem Markup Languages</title>. </bibl>
 
                <bibl xml:id="jaga2004"><author>Jagadish, H. V.</author>, <author>Laks
@@ -1164,20 +1170,20 @@
                      Srivastava</author>, and <author>N.
                      Wiwatwattana</author>.<date>2004</date>.<title>Colorful XML: one hierarchy
                      isn’t enough.</title> Presented at the SIGMOD conference 2004 in Paris, France.
-                     doi:<idno>https://doi.org/10.1145/1007568.1007598.</idno></bibl>
+                     DOI:<idno>https://doi.org/10.1145/1007568.1007598.</idno></bibl>
 
                <bibl xml:id="iacob2005"><author>Iacob, Ionut Emil</author> and <author>Alex
                      Dekhtyar</author>. <date>2005</date>
                   <title level="a">Towards a query language for multihierarchical XML: revisiting
                      XPath.</title>
-                  <title level="m">Eighth International Workshop on the Web and Databases</title>,
+                  <title level="j">Eighth International Workshop on the Web and Databases</title>,
                   June 16–17, 2005, Baltimore, Maryland, USA. <ref
                      target="http://users.csc.calpoly.edu/%7Edekhtyar/publications/webdb05.pdf"
                   /></bibl>
 
                <bibl xml:id="iacob2003">Iacob, Ionut E. and Alex Dekhtyar. <date>2003</date>.
                      <title>A framework for management of concurrent XML markup.</title>
-                  <title level="m">XML Schema and Data Management ’03.</title>
+                  <title level="j">XML Schema and Data Management ’03.</title>
                   <ref
                      target="http://users.csc.calpoly.edu/%7Edekhtyar/publications/xsdm03.concurrent.pdf"
                   />
@@ -1186,9 +1192,9 @@
                <bibl xml:id="andre2012"><author>André, Julie</author> and <author>Elena
                      Pierazzo</author>. <date>2012</date>. <title>Autour d’une séquence et des notes
                      du Cahier 46: enjeu du codage dans les brouillons de Proust / Around a sequence
-                     and some notes of Notebook 46: encoding issues about Proust’s
-                  drafts</title>.Prototype available <ref
-                     target="http://research.cch.kcl.ac.uk/proust_prototype/">online</ref>.</bibl>
+                     and some notes of Notebook 46: encoding issues about Proust’s drafts</title>.
+                  Available <ref target="http://research.cch.kcl.ac.uk/proust_prototype/"
+                     >online</ref>.</bibl>
 
                <bibl xml:id="bryant2006"><author>Bryant, John</author>. <date>2006</date>.
                      <title>Editing a Fluid Text</title>. Available <ref
@@ -1198,31 +1204,33 @@
                <bibl xml:id="renear1993"><author>Renear, Allen</author>, Renear, <author>Elli
                      Mylonas</author>, and <author>David Durand</author>. <date>1993</date>.
                      <title>Refining our Notion of What Text Really Is: The Problem of Overlapping
-                     Hierarchies</title>. Available online.</bibl>
+                     Hierarchies</title>. Available <ref
+                     target="http://cds.library.brown.edu/resources/stg/monographs/ohco.html"
+                     >online</ref>.</bibl>
 
                <bibl xml:id="dekk2017"><author>Haentjens Dekker, Ronald</author> and <author>David
                      J. Birnbaum</author>. <date>2017</date>. <title level="a">It’s More Than Just
-                     Overlap: Text As Graph</title><title level="m">Proceedings of Balisage: The
+                     Overlap: Text As Graph</title><title level="j">Proceedings of Balisage: The
                      Markup Conference 2017</title><series>Balisage Series on Markup
-                     Technologies</series>, <biblScope unit="volume">19</biblScope>,
-                     doi:<idno>https://doi.org/10.4242/BalisageVol19.Dekker01</idno></bibl>
+                     Technologies</series>, <biblScope unit="volume">19</biblScope>.
+                     DOI:<idno>https://doi.org/10.4242/BalisageVol19.Dekker01</idno></bibl>
 
                <bibl xml:id="dekk2018"><author>Haentjens Dekker, Ronald</author>, <author>Elli
                      Bleeker</author>, <author>Bram Buitendijk</author>, <author>Astrid
                      Kulsdom</author> and <author>David J. Birnbaum</author>. <date>2018</date>.
                      <title level="a">TAGML: a Markup Language of Many Dimensions</title><title
-                     level="m">Proceedings of Balisage: The Markup Conference 2018</title>.
+                     level="j">Proceedings of Balisage: The Markup Conference 2018</title>.
                      <series>Balisage Series on Markup Technologies</series>, <biblScope
-                     unit="volume">21</biblScope>,
-                     doi:<idno>https://doi.org/10.4242/BalisageVol21.HaentjensDekker01</idno></bibl>
+                     unit="volume">21</biblScope>.
+                     DOI:<idno>https://doi.org/10.4242/BalisageVol21.HaentjensDekker01</idno></bibl>
 
                <bibl xml:id="sper2008"><author>Sperberg-McQueen, Michael</author> and <author>Claus
                      Huitfeldt</author>. <date>2008</date>
                   <title level="a">Markup Discontinued. Discontinuity in TexMecs, GODDAG Structures,
-                     and Rabbit/Duck Grammars</title><title level="m">Proceedings of Balisage: The
+                     and Rabbit/Duck Grammars</title><title level="j">Proceedings of Balisage: The
                      Markup Conference 2008</title>. <series>Balisage Series on Markup
-                     Technologies</series>, <biblScope unit="volume">1</biblScope>,
-                     doi:<idno>https://doi.org/10.4242/BalisageVol1.Sperberg-McQueen01</idno></bibl>
+                     Technologies</series>, <biblScope unit="volume">1</biblScope>.
+                     DOI:<idno>https://doi.org/10.4242/BalisageVol1.Sperberg-McQueen01</idno></bibl>
 
                <bibl xml:id="huit2003"><author>Huitfeldt, Claus</author> and
                      <author>Sperberg-McQueen, Michael</author>. <date>2001</date>, revised
@@ -1238,14 +1246,14 @@
                <bibl xml:id="huit2006"><author>Huitfeldt, Claus</author> and
                      <author>Sperberg-McQueen, Michael</author>. <date>2006</date>. <title level="a"
                      >Representation and processing of Goddag structures: implementation strategies
-                     and progress report</title>. <title level="m">Proceedings of Extreem Markup
+                     and progress report</title>. <title level="j">Proceedings of Extreem Markup
                      Languages 2006</title><ref
                      target="http://conferences.idealliance.org/extreme/html/2006/Huitfeldt01/EML2006Huitfeldt01.html"
                   /></bibl>
 
                <bibl xml:id="per2009"><author>Peroni, Sylvio</author> and <author>Fabio
                      Vitali</author>. <date>2009</date>. <title>Annotations with EARMARK for
-                     Arbitrary, Overlapping and Out-of-Order Markup</title>. <title level="m"
+                     Arbitrary, Overlapping and Out-of-Order Markup</title>. <title level="j"
                      >Proceedings of the 2009 ACM Symposium on Document Engineering</title>.
                      <idno>10.1145/1600193.1600232</idno></bibl>
 
@@ -1293,11 +1301,7 @@
                      target="https://discourse.suttacentral.net/uploads/default/original/2X/6/6056afc3c25fcf0e9b3e677c04ea4bc34b8151ab.pdf"
                   /></bibl>
 
-               <bibl xml:id="piez2014"><author>Piez, Wendell.</author>
-                  <date>2014</date>. <title level="a">TEI in LMNL: Implications for Modeling</title>
-                  <title level="m">Journal of the Text Encoding Initiative</title>, <biblScope
-                     unit="issue">8</biblScope>,
-                  DOI:<idno>https://doi.org/10.4000/jtei.1337</idno></bibl>
+
 
                <bibl xml:id="piez2008"><author>Piez, Wendell</author>. <date>2008</date>.
                      <title>LMNL in Miniature: an Introduction</title>. <ref
@@ -1308,16 +1312,18 @@
                <bibl xml:id="huit2012"><author>Marcoux, Yves</author>, <author>Claus
                      Huitfeldt</author> and <author>Michael Sperberg-McQueen</author>.
                      <date>2012</date>. <title level="a">The MLCD Overlap Corpus (MOC): Project
-                     Report</title>. <title level="m">Proceedings of Balisage: The Markup Conference
+                     Report</title>. <title level="j">Proceedings of Balisage: The Markup Conference
                      2012</title>. <series>Balisage Series on Markup Technologies</series>,
-                     <biblScope unit="volume">8</biblScope>
-                     doi:<idno>https://doi.org/10.4242/BalisageVol8.Huitfeldt02.</idno></bibl>
+                     <biblScope unit="volume">8</biblScope>.
+                     DOI:<idno>https://doi.org/10.4242/BalisageVol8.Huitfeldt02.</idno></bibl>
 
                <bibl xml:id="iorio2009"><author>Di Iorio, Angelo</author>, <author>Silvio
                      Peroni</author> and <author>Fabio Vitali</author>. <date>2009</date>. <title
                      level="a">Towards markup support for full GODDAGs and beyond: the EARMARK
-                     approach</title>. <series>Balisage Series on Markup Technologies</series>,
-                     <biblScope unit="volume">vol. 3</biblScope>. doi:<idno type="doi"
+                     approach</title>. <title level="j">Proceedings of Balisage: The Markup
+                     Conference 2009</title>
+                  <series>Balisage Series on Markup Technologies</series>, <biblScope unit="volume"
+                     >vol. 3</biblScope>. DOI:<idno type="doi"
                      >https://doi.org/10.4242/BalisageVol3.Peroni01</idno>.</bibl>
             </listBibl>
          </div>
