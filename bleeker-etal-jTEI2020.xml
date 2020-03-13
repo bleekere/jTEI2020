@@ -836,10 +836,10 @@
                               <del>so</del>
                               <add>certainly</add>
                            </subst> disagreeable ...</root>
-                     </egXML>In TAGML notation: <eg>[root&gt; ... for being &lt;|[del&gt;so&lt;del]
-                        | [add&gt;certainly&lt;add] |&gt; disagreeable... &lt;root]</eg>. At first
-                     sight, there’s little difference between the two serialisations. On the level
-                     of the data model, though, there are significant differences. <figure
+                     </egXML>In TAGML notation: <eg>[root>; ... for being &lt;|[del>so&lt;del] |
+                        [add>certainly&lt;add] |> disagreeable... &lt;root]</eg>. At first sight,
+                     there’s little difference between the two serialisations. On the level of the
+                     data model, though, there are significant differences. <figure
                         xml:id="XML-grouped-rev">
                         <graphic url="img/grouped-revision-xml.png" width="310px" height="490px"/>
                         <head type="legend">Representation of the XML tree of the code example of
@@ -890,13 +890,13 @@
                   more when we think about querying the XML and the TAGML documents. In XML, the
                   search for the text from the letter sent to Marion would not return the quotation
                   as one utterance, whereas in TAGML a search for the <eg>q</eg> element and its
-                  textual contents would.<figure
-                     xml:id="XML-discontinuity">
+                  textual contents would.<figure xml:id="XML-discontinuity">
                      <graphic url="img/discont1-xml.png" width="310px" height="490px"/>
                      <head type="legend">Representation of the XML tree of the discontinuity
                         example, showing how the XML tree has two separate <gi>q</gi> elements. The
-                           <att>next</att> and <att>prev</att> attributes are represented as labels
-                        on the markup nodes. An XML processor would need to have access to
+                           <att>next</att> and <att>prev</att> attributes, represented as labels on
+                        the markup nodes, are required to indicate that the <gi>q</gi> elements are
+                        conceptually one quotation. An XML processor would need to have access to
                         additional information in the application layer before it knows that the
                         contents of the <gi>q</gi> elements belong together semantically.</head>
                   </figure>
@@ -937,31 +937,31 @@
                      xmlns="http://www.tei-c.org/ns/Examples">
                      <root>
                         <div type="page">
-                           <delSpan spanTo="#1"/>
                            <p>
-                              <s><!-- some text --></s>
+                              <!-- some text -->
+                              <delSpan spanTo="#1"/>
+                              <!-- some text -->
                            </p>
                         </div>
                         <div type="page">
-                           <p>
-                              <s><!-- some text --></s>
-                           </p>
+                           <p><!-- some text --></p>
                            <anchor xml:id="1"/>
                         </div>
                      </root>
                   </egXML> In TAGML, we can combine the mechanism to encode discontinuity with the
                   layer functionality. We will create two layers: <list rend="inline">
                      <item>one layer for the documentary structure containing the pages and the
-                        sentences, with the layer identifier <q>D</q></item>
-                     <item>one for the textual structure with the deletion and the sentences, with
+                        deletions, with the layer identifier <q>D</q></item>
+                     <item>one for the textual structure with the paragraphs and the sentences, with
                         the layer identifier <q>T</q></item>
                   </list>. A simplification of the TAGML transcription would look as follows:
                      <figure xml:id="example-tagml-layers">
-                     <eg>[root|+T,+D> [page|D> [del|T> [s|T,D> [! some text !] &lt;s] &lt;-del]
-                        &lt;page] [page|D> [+del|T> [s|T,D> [! some text !] &lt;s] &lt;del]
-                        &lt;page] &lt;root]</eg>
+                        <graphic url="img/example-layers-tagml.png" width="2044px" height="480px"/>
                      <head type="legend">A simplified example of encoding discontinuous and
-                        overlapping structures in TAGML.</head>
+                        overlapping structures in TAGML. The layer identifiers D and T indicate to
+                        which layer the markup nodes belong. The markup within one layer is
+                        hierarchically ordered, but layers can overlap. As a result, overlapping
+                        structures can be modelled straightforwardly in TAGML.</head>
                   </figure>If we look once more at the visualisations of the underlying data
                   structures, we clearly see that it is not possible to encode in XML that the
                   deletion spans over multiple paragraphs and multiple <gi>div</gi> elements. The
@@ -979,12 +979,12 @@
                   <figure xml:id="TAGML-overlap">
                      <graphic url="img/discont2-tagml.png" width="410px" height="490px"/>
                      <head type="legend">Representation of the TAGML hypergraph of the overlap
-                        example. The Markup node <q>del</q> is connected to the relevant Text nodes
-                        by means of a hyperedge. The visualisation clearly shows that there there is
-                        just one <q>del</q> element, regardless of the overlap. This information is
-                        available at the level of the model and can be parsed and queried without
-                        additional information from the application level.
-                        <!-- TODO: update visualisatie, toon de layer IDs --></head>
+                        example. By grouping the <q>page</q> and the <q>del</q> element in markup layer <q>D</q>, and the
+                        <q>p</q> element in markup layer <q>T</q>, we can model both discontinuity and overlap.
+                        The visualisation shows that there there is just one <q>del</q> element,
+                        regardless of the overlap. This information is available at the level of the
+                        model and can be parsed and queried without additional information from the
+                        application level. </head>
                   </figure></p>
             </div>
          </div>
